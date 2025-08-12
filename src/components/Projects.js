@@ -1,73 +1,55 @@
 'use client';
 
 import { useState } from 'react';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import Image from 'next/image';
 import styles from '../styles/Projects.module.css';
 
 const projectsData = [
   {
-    id: 'gym-management',
-    title: 'Gym Management System',
-    description: 'A comprehensive gym management system built with modern web technologies to handle memberships, trainers, and facility management with real-time analytics.',
-    image: '/project1.png',
-    tech: ['React', 'Node.js', 'MongoDB', 'CSS3', 'Express'],
+    id: 'macroforge',
+    title: 'MacroForge – Professional Macro Calculator',
+    description: 'A comprehensive web application built with Next.js 14 that provides personalized nutrition plans, workout routines, and downloadable PDF reports. The platform helps users track their fitness goals with scientific accuracy and intuitive design.',
+    image: '/macroforge.png',
+    tech: ['Next.js 14', 'React', 'JavaScript', 'CSS3', 'Recharts', 'PDF Generation'],
     features: [
-      'Member registration and management system',
-      'Trainer scheduling and assignment',
-      'Payment processing integration',
-      'Real-time dashboard analytics',
-      'Equipment maintenance tracking',
-      'Mobile-responsive design'
+      'Responsive macro calculator with Next.js 14 architecture',
+      'Personalized nutrition plans based on user goals',
+      'Interactive workout routine recommendations',
+      'Downloadable PDF reports for tracking progress',
+      'Mifflin-St Jeor equation integration for accurate BMR calculations',
+      'Interactive data visualization using Recharts library',
+      'Mobile-responsive design for cross-device compatibility',
+      'Helped users improve goal adherence by 35%'
     ],
-    liveUrl: '',
-    githubUrl: 'https://github.com/RaghuRajMathur',
-    category: 'Full Stack'
+    liveUrl: 'https://macro-forge-calculator.vercel.app/',
+    githubUrl: 'https://github.com/RaghuRajMathur/MacroForge-calculator',
+    category: 'Full Stack',
+    impact: 'Improved user goal adherence by 35% and serves 500+ active users'
   },
   {
-    id: 'pinbox-dashboard',
-    title: 'Pinbox - Team Dashboard',
-    description: 'An intuitive team management dashboard designed to streamline project coordination and enhance team collaboration with modern UI/UX principles.',
-    image: '/project2.png',
-    tech: ['Next.js', 'React', 'CSS Modules', 'JavaScript', 'Chart.js'],
+    id: 'portfolio-website',
+    title: 'Personal Portfolio Website',
+    description: 'A modern, responsive portfolio website built with Next.js and featuring advanced animations, interactive components, and optimized performance. Showcases my frontend development skills and project experience.',
+    image: '/portfolio.png',
+    tech: ['Next.js', 'React', 'CSS Modules', 'JavaScript', 'Scroll Animations'],
     features: [
-      'Team project management interface',
-      'Task assignment and tracking system',
-      'Real-time collaboration tools',
-      'Performance analytics dashboard',
-      'File sharing and documentation',
-      'Notification and alert system'
+      'Modern responsive design with mobile-first approach',
+      'Interactive scroll animations and smooth transitions',
+      'Optimized performance with Next.js Image optimization',
+      'Clean, professional UI with consistent design system',
+      'Accessible and SEO-optimized structure',
+      'Contact form with email integration'
     ],
     liveUrl: '',
     githubUrl: 'https://github.com/RaghuRajMathur',
-    category: 'Frontend'
-  },
-  {
-    id: 'stock-analysis',
-    title: 'Stock Data Analysis Platform',
-    description: 'A comprehensive stock market analysis application developed during internship at Hackveda Limited, featuring advanced data processing and visualization.',
-    image: '/project3.png',
-    tech: ['Java', 'Spring Boot', 'MySQL', 'Chart.js', 'REST API'],
-    features: [
-      'Real-time stock data processing',
-      'Technical analysis algorithms implementation',
-      'Interactive data visualization charts',
-      'Portfolio performance tracking',
-      'Risk assessment tools',
-      'Market trend analysis'
-    ],
-    liveUrl: '',
-    githubUrl: 'https://github.com/RaghuRajMathur',
-    category: 'Backend'
+    category: 'Frontend',
+    impact: 'Professional showcase of development skills and achievements'
   }
 ];
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState('gym-management');
-  const [filter, setFilter] = useState('all');
-
-  // Scroll animations
-  const headerAnimation = useScrollAnimation({ threshold: 0.3 });
-  const projectsAnimation = useScrollAnimation({ threshold: 0.4 });
+  const [activeProject, setActiveProject] = useState('macroforge');
+  const [filter] = useState('all');
 
   const currentProject = projectsData.find(p => p.id === activeProject);
   const filteredProjects = filter === 'all' 
@@ -77,7 +59,7 @@ export default function Projects() {
   return (
     <section id="projects" className={styles.projects}>
       <div className={styles.container}>
-        <div className={`${styles.sectionHeader} scroll-fade-up ${headerAnimation.isVisible ? 'visible' : ''}`} ref={headerAnimation.elementRef}>
+        <div className={styles.sectionHeader}>
           <div className={styles.badge}>
             <span>My Portfolio</span>
           </div>
@@ -85,39 +67,12 @@ export default function Projects() {
             Featured <span className={`${styles.gradientText} pulse-text`}>Projects</span>
           </h2>
           <p className={styles.sectionDescription}>
-            A showcase of my recent work and projects that demonstrate my skills 
-            in frontend development, full-stack solutions, and problem-solving.
+            A showcase of my recent projects that demonstrate my skills in frontend development, 
+            problem-solving, and creating impactful digital solutions.
           </p>
         </div>
 
-        <div className={`${styles.projectsContainer} scroll-fade-up ${projectsAnimation.isVisible ? 'visible' : ''}`} ref={projectsAnimation.elementRef}>
-          {/* Project Filter */}
-          <div className={styles.projectFilter}>
-            <button 
-              className={`${styles.filterBtn} ${filter === 'all' ? styles.active : ''}`}
-              onClick={() => setFilter('all')}
-            >
-              All Projects
-            </button>
-            <button 
-              className={`${styles.filterBtn} ${filter === 'frontend' ? styles.active : ''}`}
-              onClick={() => setFilter('frontend')}
-            >
-              Frontend
-            </button>
-            <button 
-              className={`${styles.filterBtn} ${filter === 'full stack' ? styles.active : ''}`}
-              onClick={() => setFilter('full stack')}
-            >
-              Full Stack
-            </button>
-            <button 
-              className={`${styles.filterBtn} ${filter === 'backend' ? styles.active : ''}`}
-              onClick={() => setFilter('backend')}
-            >
-              Backend
-            </button>
-          </div>
+        <div className={styles.projectsContainer}>
 
           {/* Project Navigation */}
           <div className={styles.projectsNav}>
@@ -139,28 +94,17 @@ export default function Projects() {
           {/* Project Display */}
           <div className={styles.projectDisplay}>
             <div className={styles.projectContent}>
-              <div className={styles.projectVisual}>
-                <div className={styles.projectImageContainer}>
-                  <div className={styles.projectImagePlaceholder}>
-                    <span>Project Screenshot</span>
-                    <p>{currentProject.title}</p>
-                  </div>
-                  <div className={styles.projectOverlay}>
-                    <div className={styles.projectTech}>
-                      {currentProject.tech.map((tech, index) => (
-                        <span key={index} className={styles.techBadge}>{tech}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <div className={styles.projectInfo}>
                 <div className={styles.projectHeader}>
                   <h3 className={styles.projectTitle}>{currentProject.title}</h3>
                   <span className={styles.projectCategory}>{currentProject.category}</span>
                 </div>
                 <p className={styles.projectDescription}>{currentProject.description}</p>
+                
+                <div className={styles.projectImpact}>
+                  <h4>Project Impact:</h4>
+                  <p className={styles.impactText}>{currentProject.impact}</p>
+                </div>
                 
                 <div className={styles.projectFeatures}>
                   <h4>Key Features & Achievements:</h4>
@@ -180,11 +124,41 @@ export default function Projects() {
                       View Live Demo
                     </a>
                   ) : (
-                    <span className={styles.comingSoon}>Live Demo Coming Soon</span>
+                    <span className={styles.comingSoon}>Live Demo</span>
                   )}
                   <a href={currentProject.githubUrl} className={styles.secondaryBtn} target="_blank" rel="noopener noreferrer">
                     View Source Code
                   </a>
+                </div>
+              </div>
+
+              <div className={styles.projectVisual}>
+                <div className={styles.projectImageContainer}>
+                  {/* Display actual image if available, otherwise show placeholder */}
+                  {currentProject.image && currentProject.id === 'macroforge' ? (
+                    <Image
+                      src={currentProject.image}
+                      alt={`${currentProject.title} Screenshot`}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      className={styles.projectImage}
+                    />
+                  ) : (
+                    <div className={styles.projectImagePlaceholder}>
+                      <span>Project Screenshot</span>
+                      <p>{currentProject.title}</p>
+                    </div>
+                  )}
+                </div>
+                
+                {/* Technologies section moved below the image */}
+                <div className={styles.projectTechSection}>
+                  <h4 className={styles.techTitle}>Technologies Used:</h4>
+                  <div className={styles.projectTech}>
+                    {currentProject.tech.map((tech, index) => (
+                      <span key={index} className={styles.techBadge}>{tech}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

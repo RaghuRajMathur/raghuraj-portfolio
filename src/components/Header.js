@@ -19,7 +19,7 @@ export default function Header() {
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <span>RaghuRaj</span>
+          <span>RaghuRaj Mathur</span>
         </div>
         
         <nav className={styles.navigation}>

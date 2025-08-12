@@ -1,17 +1,12 @@
 'use client';
 
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import styles from '../styles/About.module.css';
 
 export default function About() {
-  const headerAnimation = useScrollAnimation({ threshold: 0.3 });
-  const contentAnimation = useScrollAnimation({ threshold: 0.4 });
-  const statsAnimation = useScrollAnimation({ threshold: 0.5 });
-
   return (
     <section id="about" className={styles.about}>
       <div className={styles.container}>
-        <div className={`${styles.sectionHeader} scroll-fade-up ${headerAnimation.isVisible ? 'visible' : ''}`} ref={headerAnimation.elementRef}>
+        <div className={styles.sectionHeader}>
           <div className={styles.badge}>
             <span>Get To Know Me</span>
           </div>
@@ -20,37 +15,45 @@ export default function About() {
           </h2>
         </div>
 
-        <div className={`${styles.aboutContent} scroll-fade-up ${contentAnimation.isVisible ? 'visible' : ''}`} ref={contentAnimation.elementRef}>
+        <div className={styles.aboutContent}>
           <div className={styles.aboutText}>
-            <h3>Frontend Developer & Problem Solver</h3>
+            <h3>Aspiring Frontend Developer & Tech Enthusiast</h3>
             <p>
-              I'm RaghuRaj Mathur, a passionate frontend developer from North Delhi, India. With a strong 
-              foundation in modern web technologies, I specialize in creating responsive, user-centered 
-              applications that solve real-world problems.
+              I&apos;m RaghuRaj Mathur, an aspiring frontend developer and final-year BCA student from North Delhi, India. 
+              With strong technical skills in HTML, CSS, JavaScript, React, Next.js, and Node.js, I&apos;m passionate about 
+              creating responsive, user-focused web applications that solve real-world problems.
             </p>
             <p>
-              My journey in web development started with a curiosity for how things work on the web. 
-              Today, I'm proficient in React, Next.js, JavaScript, and various other technologies that 
-              help me build exceptional digital experiences.
+              My journey combines academic excellence with practical experience. I&apos;ve completed internships at 
+              ParityBit Academy and Hackveda Limited, where I gained hands-on experience in frontend development 
+              and stock data analysis. I&apos;m also proficient in programming languages like Java, Python, and Django.
             </p>
             <p>
-              I believe in writing clean, efficient code and staying updated with the latest industry 
-              trends. My goal is to create applications that not only look great but also provide 
-              seamless user experiences and optimal performance.
+              Beyond coding, I demonstrate strong leadership skills as Director of the Placement Cell, managing 
+              a team of 26 members and coordinating events like Cynet Day 2025. I believe in continuous learning 
+              and leveraging modern technologies to create innovative solutions.
             </p>
             
             <div className={styles.personalInfo}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Location:</span>
-                <span>North Delhi, Delhi, India</span>
+                <span>North Delhi, India</span>
               </div>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Email:</span>
                 <span>raghuu715@gmail.com</span>
               </div>
               <div className={styles.infoItem}>
+                <span className={styles.infoLabel}>Phone:</span>
+                <span>+91 9810253269</span>
+              </div>
+              <div className={styles.infoItem}>
+                <span className={styles.infoLabel}>Education:</span>
+                <span>BCA Final Year (CGPA: 8.2)</span>
+              </div>
+              <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Status:</span>
-                <span>Available for opportunities</span>
+                <span>Available for frontend opportunities</span>
               </div>
             </div>
           </div>
@@ -58,37 +61,41 @@ export default function About() {
           <div className={styles.aboutVisual}>
             <div className={styles.skillHighlights}>
               <div className={styles.highlight}>
-                <h4>Frontend Focus</h4>
-                <p>Specialized in React, Next.js, and modern JavaScript frameworks</p>
+                <h4>Technical Skills</h4>
+                <p>Proficient in HTML, CSS, JavaScript, React, Next.js, Node.js, Java, Python, and Django</p>
               </div>
               <div className={styles.highlight}>
-                <h4>Responsive Design</h4>
-                <p>Creating seamless experiences across all devices and screen sizes</p>
+                <h4>Leadership Excellence</h4>
+                <p>Director of Placement Cell managing 26 members with proven team coordination abilities</p>
               </div>
               <div className={styles.highlight}>
-                <h4>Performance Optimization</h4>
-                <p>Building fast, efficient applications with optimal user experience</p>
+                <h4>Academic Achievement</h4>
+                <p>Maintaining CGPA of 8.2 in BCA program with strong foundation in computer applications</p>
+              </div>
+              <div className={styles.highlight}>
+                <h4>Practical Experience</h4>
+                <p>Completed multiple internships and built real-world projects with measurable impact</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className={`${styles.aboutStats} scroll-fade-up ${statsAnimation.isVisible ? 'visible' : ''}`} ref={statsAnimation.elementRef}>
+        <div className={styles.aboutStats}>
           <div className={styles.statItem}>
-            <div className={styles.statNumber}>10+</div>
-            <div className={styles.statLabel}>Projects Completed</div>
+            <div className={styles.statNumber}>8.2</div>
+            <div className={styles.statLabel}>CGPA</div>
+          </div>
+          <div className={styles.statItem}>
+            <div className={styles.statNumber}>26</div>
+            <div className={styles.statLabel}>Team Members Led</div>
           </div>
           <div className={styles.statItem}>
             <div className={styles.statNumber}>2+</div>
-            <div className={styles.statLabel}>Years Experience</div>
+            <div className={styles.statLabel}>Internships</div>
           </div>
           <div className={styles.statItem}>
-            <div className={styles.statNumber}>6+</div>
-            <div className={styles.statLabel}>Technologies Mastered</div>
-          </div>
-          <div className={styles.statItem}>
-            <div className={styles.statNumber}>100%</div>
-            <div className={styles.statLabel}>Client Satisfaction</div>
+            <div className={styles.statNumber}>5+</div>
+            <div className={styles.statLabel}>Projects Built</div>
           </div>
         </div>
       </div>

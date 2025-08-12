@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import styles from '../styles/Skills.module.css';
 
 const skillsData = [
@@ -26,9 +25,9 @@ const skillsData = [
       { name: 'Node.js', level: 75 },
       { name: 'Python', level: 80 },
       { name: 'Django', level: 70 },
-      { name: 'Database Design', level: 72 },
-      { name: 'API Development', level: 75 },
-      { name: 'Authentication', level: 68 }
+      { name: 'Java', level: 85 },
+      { name: 'Spring Boot', level: 75 },
+      { name: 'MySQL', level: 78 }
     ]
   },
   {
@@ -51,11 +50,18 @@ export default function Skills() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const intervalRef = useRef(null);
 
-  // Scroll animations
-  const headerAnimation = useScrollAnimation({ threshold: 0.3 });
-  const skillsAnimation = useScrollAnimation({ threshold: 0.4 });
-
   const currentSkillSet = skillsData[currentSkillIndex];
+
+  // Use useCallback to memoize the function and prevent recreation
+  const handleNextSkill = useCallback(() => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSkillIndex((prev) => (prev + 1) % skillsData.length);
+      setIsTransitioning(false);
+    }, 300);
+  }, [isTransitioning]);
 
   // Auto-advance skills every 8 seconds
   useEffect(() => {
@@ -68,17 +74,7 @@ export default function Skills() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [currentSkillIndex]);
-
-  const handleNextSkill = () => {
-    if (isTransitioning) return;
-    
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentSkillIndex((prev) => (prev + 1) % skillsData.length);
-      setIsTransitioning(false);
-    }, 300);
-  };
+  }, [handleNextSkill]);
 
   const handlePrevSkill = () => {
     if (isTransitioning) return;
@@ -103,7 +99,7 @@ export default function Skills() {
   return (
     <section id="skills" className={styles.skills}>
       <div className={styles.container}>
-        <div className={`${styles.sectionHeader} scroll-fade-up ${headerAnimation.isVisible ? 'visible' : ''}`} ref={headerAnimation.elementRef}>
+        <div className={styles.sectionHeader}>
           <div className={styles.badge}>
             <span>Technical Expertise</span>
           </div>
@@ -116,7 +112,7 @@ export default function Skills() {
           </p>
         </div>
 
-        <div className={`${styles.skillsContainer} scroll-fade-up ${skillsAnimation.isVisible ? 'visible' : ''}`} ref={skillsAnimation.elementRef}>
+        <div className={styles.skillsContainer}>
           <div className={`${styles.skillsDisplay} ${isTransitioning ? styles.transitioning : ''}`}>
             <div className={styles.skillsContent}>
               <div className={styles.skillsText}>
@@ -125,7 +121,7 @@ export default function Skills() {
                 
                 <div className={styles.skillsList}>
                   {currentSkillSet.skills.map((skill, index) => (
-                    <div key={index} className={`${styles.skillItem} stagger-${index + 1}`}>
+                    <div key={index} className={styles.skillItem}>
                       <div className={styles.skillHeader}>
                         <span className={styles.skillName}>{skill.name}</span>
                         <span className={styles.skillLevel}>{skill.level}%</span>
