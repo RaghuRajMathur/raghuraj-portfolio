@@ -79,25 +79,6 @@ export default function About() {
             </div>
           </div>
         </div>
-
-        <div className={styles.aboutStats}>
-          <div className={styles.statItem}>
-            <div className={styles.statNumber}>8.2</div>
-            <div className={styles.statLabel}>CGPA</div>
-          </div>
-          <div className={styles.statItem}>
-            <div className={styles.statNumber}>26</div>
-            <div className={styles.statLabel}>Team Members Led</div>
-          </div>
-          <div className={styles.statItem}>
-            <div className={styles.statNumber}>2+</div>
-            <div className={styles.statLabel}>Internships</div>
-          </div>
-          <div className={styles.statItem}>
-            <div className={styles.statNumber}>5+</div>
-            <div className={styles.statLabel}>Projects Built</div>
-          </div>
-        </div>
       </div>
     </section>
   );
