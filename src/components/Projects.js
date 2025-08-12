@@ -40,8 +40,8 @@ const projectsData = [
       'Accessible and SEO-optimized structure',
       'Contact form with email integration'
     ],
-    liveUrl: '',
-    githubUrl: 'https://github.com/RaghuRajMathur',
+    liveUrl: 'https://raghurajmathur-portfolio.vercel.app/',
+    githubUrl: 'https://github.com/RaghuRajMathur/raghuraj-portfolio',
     category: 'Frontend',
     impact: 'Professional showcase of development skills and achievements'
   }
@@ -134,8 +134,8 @@ export default function Projects() {
 
               <div className={styles.projectVisual}>
                 <div className={styles.projectImageContainer}>
-                  {/* Display actual image if available, otherwise show placeholder */}
-                  {currentProject.image && currentProject.id === 'macroforge' ? (
+                  {/* ✅ FIXED: Display image for any project that has an image */}
+                  {currentProject.image ? (
                     <Image
                       src={currentProject.image}
                       alt={`${currentProject.title} Screenshot`}
@@ -151,7 +151,7 @@ export default function Projects() {
                   )}
                 </div>
                 
-                {/* Technologies section moved below the image */}
+                {/* Technologies section below the image */}
                 <div className={styles.projectTechSection}>
                   <h4 className={styles.techTitle}>Technologies Used:</h4>
                   <div className={styles.projectTech}>
