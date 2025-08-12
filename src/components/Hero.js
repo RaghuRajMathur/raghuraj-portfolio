@@ -70,7 +70,7 @@ export default function Hero() {
             <div className={styles.profileContainer}>
               <div className={styles.profileImage}>
                 <Image
-                  src="/your-photo.jpg"
+                  src="/profile.jpg"
                   alt="RaghuRaj Mathur - Frontend Developer"
                   fill
                   style={{ 
