@@ -44,8 +44,9 @@ export default function Hero() {
             <h1 className={styles.heroTitle}>
               Hi, I&apos;m RaghuRaj Mathur
               <br />
-              <span className={`${styles.gradientText} pulse-text`}>
-                I Build {typedText}
+              <span className={styles.gradientText}>
+                <span className={styles.staticText}>I Build </span>
+                <span className={styles.typedText}>{typedText}</span>
                 <span className={styles.cursor}>|</span>
               </span>
             </h1>

@@ -44,12 +44,8 @@ export default function About() {
                 <span>raghuu715@gmail.com</span>
               </div>
               <div className={styles.infoItem}>
-                <span className={styles.infoLabel}>Phone:</span>
-                <span>+91 9810253269</span>
-              </div>
-              <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Education:</span>
-                <span>BCA Final Year (CGPA: 8.2)</span>
+                <span>BCA Graduated (CGPA: 8.2)</span>
               </div>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Status:</span>

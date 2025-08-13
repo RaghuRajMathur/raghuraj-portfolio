@@ -7,6 +7,7 @@
   backdrop-filter: blur(2px);
   position: relative;
   overflow: hidden;
+  z-index: 2; /* Ensure hero is above particles */
 }
 
 .hero::before {
@@ -18,6 +19,7 @@
   height: 150%;
   background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
   animation: float 20s ease-in-out infinite;
+  z-index: -1; /* Keep background behind content */
 }
 
 @keyframes float {
@@ -30,7 +32,7 @@
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
-  z-index: 2;
+  z-index: 3; /* Higher than hero section */
 }
 
 .heroContent {
@@ -49,6 +51,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: var(--shadow-xl);
   position: relative;
+  z-index: 4; /* Ensure text container is above background */
 }
 
 .heroText::before {
@@ -61,6 +64,7 @@
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: xor;
   opacity: 0.3;
+  z-index: -1; /* Keep border effect behind content */
 }
 
 .badge {
@@ -75,6 +79,8 @@
   margin-bottom: 2rem;
   box-shadow: var(--shadow-md);
   animation: bounce 2s ease-in-out infinite;
+  position: relative;
+  z-index: 5;
 }
 
 @keyframes bounce {
@@ -83,13 +89,33 @@
   60% { transform: translateY(-5px); }
 }
 
+/* Significantly reduced title size to prevent wrapping */
 .heroTitle {
-  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem); /* Reduced from 2.8rem-4.2rem to 1.8rem-2.8rem */
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.2; /* Slightly increased for better readability */
   margin-bottom: 2rem;
   color: var(--text-primary);
   letter-spacing: -0.025em;
+  position: relative;
+  z-index: 5;
+}
+
+/* Simplified typing container without fixed width */
+.typingContainer {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.typedText {
+  display: inline;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem); /* Smaller than main title */
+  font-weight: 800;
 }
 
 .gradientText {
@@ -99,11 +125,13 @@
   background-clip: text;
   position: relative;
   display: inline-block;
-  overflow: visible;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem); /* Match typed text size */
+  font-weight: 800;
+  white-space: nowrap; /* Prevent wrapping */
 }
 
 .gradientText::before {
-  content: "React Applications";
+  content: "I Build Responsive Websites"; /* Updated to longest text */
   position: absolute;
   top: 0;
   left: 0;
@@ -114,12 +142,18 @@
   overflow: hidden;
   pointer-events: none;
   z-index: -1;
+  font-weight: inherit;
+  font-size: inherit;
 }
 
 .cursor {
   color: var(--accent-blue);
   font-weight: 900;
   animation: blink 1s step-start infinite;
+  display: inline;
+  margin-left: 2px;
+  -webkit-text-fill-color: var(--accent-blue);
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem); /* Match text size */
 }
 
 @keyframes blink {
@@ -127,31 +161,38 @@
 }
 
 .heroDescription {
-  font-size: 1.25rem;
+  font-size: 1.1rem; /* Slightly reduced from 1.25rem */
   line-height: 1.7;
   color: var(--text-secondary);
   margin-bottom: 3rem;
   max-width: 550px;
+  position: relative;
+  z-index: 5;
 }
 
 .heroActions {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 10; /* Highest z-index for buttons */
 }
 
 .primaryBtn {
   background: var(--gradient-primary);
   color: var(--text-white);
   text-decoration: none;
-  padding: 1.2rem 2.5rem;
+  padding: 1rem 2rem; /* Slightly reduced padding */
   border-radius: var(--radius-full);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem; /* Reduced from 1.1rem */
   transition: var(--transition-smooth);
   box-shadow: var(--shadow-lg);
   position: relative;
   overflow: hidden;
+  z-index: 11; /* Even higher for individual buttons */
+  cursor: pointer;
+  pointer-events: auto; /* Ensure pointer events work */
 }
 
 .primaryBtn::before {
@@ -163,6 +204,7 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: var(--transition-slow);
+  z-index: -1; /* Keep shimmer effect behind text */
 }
 
 .primaryBtn:hover::before {
@@ -178,13 +220,17 @@
   background: var(--bg-card);
   color: var(--primary-blue);
   text-decoration: none;
-  padding: 1.2rem 2.5rem;
+  padding: 1rem 2rem; /* Slightly reduced padding */
   border-radius: var(--radius-full);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem; /* Reduced from 1.1rem */
   border: 2px solid var(--primary-blue);
   transition: var(--transition-smooth);
   box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 11; /* Same high z-index as primary button */
+  cursor: pointer;
+  pointer-events: auto; /* Ensure pointer events work */
 }
 
 .secondaryBtn:hover {
@@ -198,6 +244,8 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
+  z-index: 4;
 }
 
 .profileContainer {
@@ -206,9 +254,11 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 3rem;
+  z-index: 5;
 }
 
 .profileImage {
+  position: relative; /* Required for Next.js Image fill */
   width: 320px;
   height: 320px;
   border-radius: 50%;
@@ -220,8 +270,8 @@
   font-weight: 600;
   font-size: 1.2rem;
   box-shadow: var(--shadow-xl);
-  position: relative;
-  overflow: hidden;
+  overflow: hidden; /* Ensures image stays within circle */
+  z-index: 6;
 }
 
 .profileImage::before {
@@ -237,6 +287,12 @@
 @keyframes rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* Ensure the image covers the container properly */
+.profileImage img {
+  border-radius: 50% !important;
+  z-index: 1;
 }
 
 .profilePlaceholder {
@@ -259,6 +315,8 @@
   gap: 1rem;
   max-width: 400px;
   justify-content: flex-end;
+  z-index: 5;
+  position: relative;
 }
 
 .techItem {
@@ -272,6 +330,8 @@
   font-weight: 600;
   transition: var(--transition-smooth);
   box-shadow: var(--shadow-sm);
+  position: relative;
+  z-index: 6;
 }
 
 .techItem:hover {
@@ -281,6 +341,12 @@
   box-shadow: var(--shadow-md);
 }
 
+/* Ensure all interactive elements work */
+.heroActions * {
+  pointer-events: auto;
+}
+
+/* Responsive Design */
 @media (max-width: 1024px) {
   .heroContent {
     grid-template-columns: 1fr;
@@ -303,7 +369,7 @@
   }
   
   .heroText {
-    padding: 3rem 2rem;
+    padding: 2.5rem 1.5rem; /* Reduced padding */
   }
   
   .heroActions {
@@ -314,44 +380,66 @@
   .primaryBtn,
   .secondaryBtn {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px; /* Slightly smaller max width */
     text-align: center;
+    padding: 0.9rem 1.8rem; /* Smaller buttons */
+    font-size: 0.9rem;
   }
   
   .profileImage {
-    width: 250px;
-    height: 250px;
+    width: 220px; /* Smaller profile image */
+    height: 220px;
+  }
+  
+  .heroTitle {
+    font-size: clamp(1.5rem, 4vw, 2.2rem); /* Further reduced for mobile */
+  }
+  
+  .typedText,
+  .gradientText,
+  .cursor {
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem); /* Smaller typing text on mobile */
+  }
+  
+  .heroDescription {
+    font-size: 1rem; /* Smaller description */
   }
 }
 
-.profileImage {
-  position: relative; /* Required for Next.js Image fill */
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: var(--gradient-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-white);
-  font-weight: 600;
-  font-size: 1.2rem;
-  box-shadow: var(--shadow-xl);
-  overflow: hidden; /* Ensures image stays within circle */
-  z-index: 5;
+@media (max-width: 480px) {
+  .heroText {
+    padding: 2rem 1rem;
+  }
+  
+  .heroTitle {
+    font-size: clamp(1.3rem, 4vw, 1.9rem); /* Even smaller for very small screens */
+  }
+  
+  .typedText,
+  .gradientText,
+  .cursor {
+    font-size: clamp(1rem, 3vw, 1.5rem); /* Very small typing text */
+  }
+  
+  .heroDescription {
+    font-size: 0.95rem;
+  }
+  
+  .profileImage {
+    width: 180px;
+    height: 180px;
+  }
 }
 
-.profileImage::before {
-  content: '';
-  position: absolute;
-  inset: -5px;
-  background: var(--gradient-primary);
-  border-radius: 50%;
-  z-index: -1;
-  animation: rotate 10s linear infinite;
-}
-
-/* Ensure the image covers the container properly */
-.profileImage img {
-  border-radius: 50% !important;
+/* Ultra small screens */
+@media (max-width: 320px) {
+  .heroTitle {
+    font-size: clamp(1.1rem, 4vw, 1.6rem);
+  }
+  
+  .typedText,
+  .gradientText,
+  .cursor {
+    font-size: clamp(0.9rem, 3vw, 1.3rem);
+  }
 }

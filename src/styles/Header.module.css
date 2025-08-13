@@ -23,6 +23,7 @@
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  position: relative;
 }
 
 .logo {
@@ -33,6 +34,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -0.025em;
+  z-index: 1001;
 }
 
 .navigation {
@@ -49,6 +51,7 @@
   transition: var(--transition-smooth);
   position: relative;
   padding: 0.5rem 0;
+  white-space: nowrap;
 }
 
 .navLink::after {
@@ -71,6 +74,11 @@
   width: 100%;
 }
 
+.headerActions {
+  display: flex;
+  align-items: center;
+}
+
 .resumeBtn {
   background: var(--gradient-primary);
   color: var(--text-white);
@@ -81,6 +89,7 @@
   font-size: 0.9rem;
   transition: var(--transition-smooth);
   box-shadow: var(--shadow-md);
+  white-space: nowrap;
 }
 
 .resumeBtn:hover {
@@ -88,9 +97,157 @@
   box-shadow: var(--shadow-blue);
 }
 
-@media (max-width: 768px) {
+/* Mobile Menu Button */
+.mobileMenuBtn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 24px;
+  height: 18px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--primary-blue);
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger span:nth-child(1) {
+  margin-bottom: 6px;
+}
+
+.hamburger span:nth-child(2) {
+  margin-bottom: 6px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Navigation */
+.mobileNavigation {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 999;
+}
+
+.mobileNavigation.mobileNavOpen {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileNavLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition-smooth);
+}
+
+.mobileNavLink:hover {
+  color: var(--primary-blue);
+}
+
+.mobileResumeBtn {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.mobileResumeBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-blue);
+}
+
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
   .navigation {
+    gap: 2rem;
+  }
+  
+  .navLink {
+    font-size: 0.9rem;
+  }
+  
+  .resumeBtn {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navigation {
+    gap: 1.5rem;
+  }
+  
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .navigation,
+  .headerActions {
     display: none;
+  }
+  
+  .mobileMenuBtn {
+    display: block;
   }
   
   .container {
@@ -100,4 +257,34 @@
   .logo {
     font-size: 1.5rem;
   }
+  
+  .mobileNavigation {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+    height: 70px;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .mobileNavigation {
+    top: 70px;
+    padding: 1.5rem 1rem;
+  }
+  
+  .mobileNavLink {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.mobile-menu-open {
+  overflow: hidden;
 }

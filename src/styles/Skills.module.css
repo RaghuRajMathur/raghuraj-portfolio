@@ -3,11 +3,14 @@
   background: transparent;
   backdrop-filter: blur(2px);
   position: relative;
+  z-index: 2; /* Ensure skills section is above particles */
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 3; /* Higher than skills section */
 }
 
 .sectionHeader {
@@ -15,6 +18,8 @@
   margin-bottom: 5rem;
   max-width: 800px;
   margin: 0 auto 5rem auto;
+  position: relative;
+  z-index: 4;
 }
 
 .badge {
@@ -28,6 +33,8 @@
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 5;
 }
 
 .sectionTitle {
@@ -37,6 +44,8 @@
   margin-bottom: 1.5rem;
   line-height: 1.2;
   letter-spacing: -0.025em;
+  position: relative;
+  z-index: 5;
 }
 
 .gradientText {
@@ -52,11 +61,15 @@
   line-height: 1.7;
   max-width: 600px;
   margin: 0 auto;
+  position: relative;
+  z-index: 5;
 }
 
 .skillsContainer {
   max-width: 1100px;
   margin: 0 auto;
+  position: relative;
+  z-index: 4;
 }
 
 .skillsDisplay {
@@ -68,6 +81,7 @@
   overflow: hidden;
   transition: var(--transition-slow);
   position: relative;
+  z-index: 5; /* Ensure display is above background */
 }
 
 .skillsDisplay::before {
@@ -80,6 +94,7 @@
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: xor;
   opacity: 0.1;
+  z-index: -1; /* Keep background effect behind content */
 }
 
 .skillsDisplay.transitioning {
@@ -89,11 +104,15 @@
 
 .skillsContent {
   padding: 4rem 3rem;
+  position: relative;
+  z-index: 6;
 }
 
 .skillsText {
   text-align: center;
   margin-bottom: 3rem;
+  position: relative;
+  z-index: 7;
 }
 
 .skillsTitle {
@@ -119,6 +138,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+  position: relative;
+  z-index: 7;
 }
 
 .skillItem {
@@ -129,6 +150,7 @@
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  z-index: 8;
 }
 
 .skillItem::before {
@@ -141,6 +163,7 @@
   background: var(--gradient-primary);
   transform: scaleX(0);
   transition: var(--transition-smooth);
+  z-index: -1;
 }
 
 .skillItem:hover::before {
@@ -209,6 +232,7 @@
   100% { left: 100%; }
 }
 
+/* FIXED: Skills Controls with proper z-index */
 .skillsControls {
   display: flex;
   align-items: center;
@@ -217,8 +241,11 @@
   padding: 2.5rem;
   background: rgba(59, 130, 246, 0.03);
   border-top: 1px solid rgba(59, 130, 246, 0.1);
+  position: relative;
+  z-index: 10; /* Highest z-index for controls */
 }
 
+/* FIXED: Navigation buttons with proper z-index */
 .navBtn {
   background: var(--gradient-primary);
   color: var(--text-white);
@@ -234,6 +261,9 @@
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 11; /* Even higher for individual buttons */
+  pointer-events: auto; /* Ensure pointer events work */
 }
 
 .navBtn:hover:not(:disabled) {
@@ -247,12 +277,16 @@
   transform: none;
 }
 
+/* FIXED: Skills dots with proper z-index */
 .skillsDots {
   display: flex;
   gap: 1rem;
   align-items: center;
+  position: relative;
+  z-index: 11; /* Same high z-index as buttons */
 }
 
+/* FIXED: Individual dots with proper z-index */
 .dot {
   width: 14px;
   height: 14px;
@@ -261,6 +295,9 @@
   border: none;
   cursor: pointer;
   transition: var(--transition-smooth);
+  position: relative;
+  z-index: 12; /* Highest for individual dot buttons */
+  pointer-events: auto; /* Ensure pointer events work */
 }
 
 .dot:hover {
@@ -279,6 +316,7 @@
   background: rgba(59, 130, 246, 0.15);
   position: relative;
   overflow: hidden;
+  z-index: 6;
 }
 
 .progressFill {
@@ -286,6 +324,16 @@
   background: var(--gradient-primary);
   transition: width 0.8s ease;
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Ensure all interactive elements work */
+.skillsControls * {
+  pointer-events: auto;
+}
+
+/* Additional fix for potential overlay issues */
+.skillsContainer * {
+  pointer-events: auto;
 }
 
 @media (max-width: 768px) {
@@ -305,15 +353,40 @@
     flex-direction: column;
     gap: 1.5rem;
     padding: 2rem;
+    z-index: 10; /* Maintain high z-index on mobile */
   }
   
   .skillsDots {
     order: -1;
+    z-index: 11; /* Maintain high z-index on mobile */
   }
   
   .navBtn {
     width: 50px;
     height: 50px;
     font-size: 1.2rem;
+    z-index: 11; /* Maintain high z-index on mobile */
+  }
+  
+  .dot {
+    z-index: 12; /* Maintain highest z-index on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .skillsControls {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .navBtn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
   }
 }

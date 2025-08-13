@@ -3,11 +3,14 @@
   background: transparent;
   backdrop-filter: blur(2px);
   position: relative;
+  z-index: 2; /* Ensure experience section is above particles */
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 3; /* Higher than experience section */
 }
 
 .sectionHeader {
@@ -15,6 +18,8 @@
   margin-bottom: 5rem;
   max-width: 800px;
   margin: 0 auto 5rem auto;
+  position: relative;
+  z-index: 4;
 }
 
 .badge {
@@ -28,6 +33,8 @@
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 5;
 }
 
 .sectionTitle {
@@ -37,6 +44,8 @@
   margin-bottom: 1.5rem;
   line-height: 1.2;
   letter-spacing: -0.025em;
+  position: relative;
+  z-index: 5;
 }
 
 .gradientText {
@@ -52,6 +61,8 @@
   line-height: 1.7;
   max-width: 600px;
   margin: 0 auto;
+  position: relative;
+  z-index: 5;
 }
 
 .subSectionTitle {
@@ -61,25 +72,34 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 3rem;
+  margin: 0 0 3rem 0; /* Fixed margin issue */
   text-align: center;
   letter-spacing: -0.025em;
+  position: relative;
+  z-index: 5;
+  clear: both; /* Ensure it clears any floating elements */
 }
 
 .experienceSection {
   margin-bottom: 5rem;
+  position: relative;
+  z-index: 4;
+  clear: both; /* Prevent overlap issues */
 }
 
 .timeline {
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
+  z-index: 5;
 }
 
 .timelineItem {
   display: flex;
   margin-bottom: 4rem;
   position: relative;
+  z-index: 6;
+  clear: both; /* Prevent stacking issues */
 }
 
 .timelineMarker {
@@ -88,6 +108,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 7;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .timelineDot {
@@ -96,9 +118,10 @@
   background: var(--gradient-primary);
   border-radius: 50%;
   border: 4px solid var(--bg-primary);
-  z-index: 2;
+  z-index: 8;
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
   position: relative;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .timelineDot::after {
@@ -126,14 +149,15 @@
 .timelineLine {
   width: 2px;
   background: linear-gradient(to bottom, var(--primary-blue), var(--light-blue));
-  min-height: 250px;
+  min-height: 10px;
   margin-top: 12px;
   border-radius: var(--radius-full);
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .timelineItem:last-child .timelineLine {
   background: linear-gradient(to bottom, var(--primary-blue) 0%, transparent 100%);
-  min-height: 100px;
+  min-height: 5px;
 }
 
 .experienceCard {
@@ -147,6 +171,8 @@
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  z-index: 7;
+  min-width: 0; /* Allow shrinking when needed */
 }
 
 .experienceCard::before {
@@ -158,6 +184,7 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.05), transparent);
   transition: var(--transition-slow);
+  z-index: -1;
 }
 
 .experienceCard:hover::before {
@@ -176,10 +203,13 @@
   align-items: flex-start;
   margin-bottom: 2rem;
   gap: 2rem;
+  position: relative;
+  z-index: 8;
 }
 
 .experienceMain {
   flex: 1;
+  min-width: 0; /* Allow text to wrap properly */
 }
 
 .position {
@@ -187,6 +217,8 @@
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.8rem;
+  word-wrap: break-word; /* Prevent text overflow */
+  line-height: 1.3;
 }
 
 .company {
@@ -197,6 +229,8 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin: 0;
+  word-wrap: break-word; /* Prevent text overflow */
+  line-height: 1.4;
 }
 
 .experienceMeta {
@@ -205,6 +239,8 @@
   gap: 0.8rem;
   align-items: flex-end;
   text-align: right;
+  flex-shrink: 0; /* Prevent shrinking */
+  min-width: fit-content;
 }
 
 .duration {
@@ -214,12 +250,14 @@
   background: rgba(59, 130, 246, 0.1);
   padding: 0.5rem 1rem;
   border-radius: var(--radius-full);
+  white-space: nowrap; /* Prevent wrapping */
 }
 
 .location {
   font-size: 0.9rem;
   color: var(--text-secondary);
   font-weight: 500;
+  white-space: nowrap; /* Prevent wrapping */
 }
 
 .type {
@@ -229,6 +267,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  white-space: nowrap; /* Prevent wrapping */
 }
 
 .type.internship {
@@ -243,11 +282,25 @@
   border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
+.type.leadership {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.type.volunteer {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
 .experienceDescription {
   font-size: 1.1rem;
   color: var(--text-secondary);
   line-height: 1.8;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 8;
 }
 
 .achievements h6,
@@ -256,6 +309,8 @@
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 8;
 }
 
 .achievements ul {
@@ -265,6 +320,8 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
+  z-index: 8;
 }
 
 .achievements li {
@@ -275,6 +332,8 @@
   background: rgba(59, 130, 246, 0.05);
   border-radius: var(--radius-md);
   transition: var(--transition-smooth);
+  position: relative;
+  z-index: 9;
 }
 
 .achievements li:hover {
@@ -301,12 +360,16 @@
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.6;
+  flex: 1;
+  min-width: 0; /* Allow text to wrap */
 }
 
 .techTags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
+  position: relative;
+  z-index: 8;
 }
 
 .techTag {
@@ -319,6 +382,7 @@
   font-weight: 600;
   border: 1px solid rgba(59, 130, 246, 0.2);
   transition: var(--transition-smooth);
+  white-space: nowrap; /* Prevent tag text from wrapping */
 }
 
 .techTag:hover {
@@ -329,6 +393,9 @@
 
 .educationSection {
   margin-top: 5rem;
+  position: relative;
+  z-index: 4;
+  clear: both;
 }
 
 .educationGrid {
@@ -337,6 +404,8 @@
   gap: 3rem;
   max-width: 1000px;
   margin: 0 auto;
+  position: relative;
+  z-index: 5;
 }
 
 .educationCard {
@@ -349,6 +418,7 @@
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  z-index: 6;
 }
 
 .educationCard::before {
@@ -359,6 +429,7 @@
   right: 0;
   height: 4px;
   background: var(--gradient-primary);
+  z-index: -1;
 }
 
 .educationCard:hover {
@@ -373,6 +444,8 @@
   align-items: flex-start;
   margin-bottom: 1.5rem;
   gap: 1.5rem;
+  position: relative;
+  z-index: 7;
 }
 
 .degree {
@@ -380,6 +453,9 @@
   font-weight: 700;
   color: var(--text-primary);
   flex: 1;
+  min-width: 0;
+  word-wrap: break-word;
+  line-height: 1.3;
 }
 
 .institution {
@@ -390,6 +466,8 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin: 0 0 0.8rem 0;
+  word-wrap: break-word;
+  line-height: 1.4;
 }
 
 .field {
@@ -397,6 +475,8 @@
   color: var(--text-secondary);
   margin: 0 0 1.5rem 0;
   font-style: italic;
+  word-wrap: break-word;
+  line-height: 1.4;
 }
 
 .educationDescription {
@@ -404,6 +484,8 @@
   color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 7;
 }
 
 .highlights h6 {
@@ -411,6 +493,8 @@
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 7;
 }
 
 .highlights ul {
@@ -420,6 +504,8 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
+  z-index: 7;
 }
 
 .highlights li {
@@ -430,6 +516,8 @@
   background: rgba(59, 130, 246, 0.05);
   border-radius: var(--radius-md);
   transition: var(--transition-smooth);
+  position: relative;
+  z-index: 8;
 }
 
 .highlights li:hover {
@@ -441,8 +529,134 @@
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.6;
+  flex: 1;
+  min-width: 0;
 }
 
+/* Ensure consistent spacing for all timeline sections */
+.experienceSection + .experienceSection {
+  margin-top: 5rem;
+}
+
+/* CGPA styling for education section */
+.cgpaContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  position: relative;
+  z-index: 7;
+}
+
+.cgpaLabel {
+  font-weight: 700;
+  color: var(--primary-blue);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.cgpaValue {
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+}
+
+/* Certifications section styling */
+.certificationsSection {
+  margin-top: 5rem;
+  position: relative;
+  z-index: 4;
+  clear: both;
+}
+
+.certificationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+.certificationCard {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-xl);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  z-index: 6;
+}
+
+.certificationCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  z-index: -1;
+}
+
+.certificationCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-blue);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.certificationTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+  word-wrap: break-word;
+  line-height: 1.3;
+}
+
+.certificationIssuer {
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 0.5rem 0;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+.certificationPlatform {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+}
+
+.certificationDescription {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .experience {
     padding: 80px 1rem;
@@ -474,11 +688,13 @@
   .experienceHeader {
     flex-direction: column;
     align-items: flex-start;
+    gap: 1rem;
   }
   
   .experienceMeta {
     align-items: flex-start;
     text-align: left;
+    width: 100%;
   }
   
   .educationGrid {
@@ -493,131 +709,7 @@
     flex-direction: column;
     align-items: flex-start;
   }
-}
-
-/* Additional styles for Leadership section to match Professional Experience */
-
-.type.leadership {
-  background: rgba(168, 85, 247, 0.15);
-  color: #a855f7;
-  border: 1px solid rgba(168, 85, 247, 0.3);
-}
-
-.type.volunteer {
-  background: rgba(34, 197, 94, 0.15);
-  color: #22c55e;
-  border: 1px solid rgba(34, 197, 94, 0.3);
-}
-
-/* Ensure consistent spacing for all timeline sections */
-.experienceSection + .experienceSection {
-  margin-top: 5rem;
-}
-
-/* CGPA styling for education section */
-.cgpaContainer {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  padding: 0.8rem;
-  background: rgba(59, 130, 246, 0.1);
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-}
-
-.cgpaLabel {
-  font-weight: 700;
-  color: var(--primary-blue);
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.cgpaValue {
-  font-weight: 800;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: var(--font-mono);
-  font-size: 1.2rem;
-}
-
-/* Certifications section styling */
-.certificationsSection {
-  margin-top: 5rem;
-}
-
-.certificationsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0;
-}
-
-.certificationCard {
-  background: var(--bg-glass);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-xl);
-  padding: 2.5rem;
-  box-shadow: var(--shadow-xl);
-  transition: var(--transition-smooth);
-  position: relative;
-  overflow: hidden;
-}
-
-.certificationCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #06b6d4, #3b82f6);
-}
-
-.certificationCard:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-blue);
-  border-color: rgba(59, 130, 246, 0.3);
-}
-
-.certificationTitle {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.8rem;
-}
-
-.certificationIssuer {
-  font-size: 1.1rem;
-  font-weight: 600;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0 0 0.5rem 0;
-}
-
-.certificationPlatform {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.certificationDescription {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
+  
   .certificationsGrid {
     grid-template-columns: 1fr;
   }
@@ -625,5 +717,48 @@
   .certificationCard {
     padding: 2rem;
   }
+  
+  .subSectionTitle {
+    font-size: 1.8rem;
+  }
+  
+  .position {
+    font-size: 1.3rem;
+  }
+  
+  .company {
+    font-size: 1.1rem;
+  }
 }
 
+@media (max-width: 480px) {
+  .experienceCard {
+    padding: 1.5rem;
+  }
+  
+  .experienceHeader {
+    gap: 0.8rem;
+  }
+  
+  .position {
+    font-size: 1.2rem;
+  }
+  
+  .company {
+    font-size: 1rem;
+  }
+  
+  .achievements li,
+  .highlights li {
+    padding: 0.8rem;
+  }
+  
+  .techTags {
+    gap: 0.5rem;
+  }
+  
+  .techTag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
