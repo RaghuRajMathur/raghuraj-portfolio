@@ -1,5 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
+/* ✅ FIX FOR HORIZONTAL SCROLL - ADD THESE LINES FIRST */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Prevent any element from exceeding viewport width */
+body > * {
+  max-width: 100vw;
+}
+
+/* Ensure images and media scale properly */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container overflow fix */
+.container, .wrapper, main, section {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 :root {
   /* Modern Blue Color Palette */
   --primary-blue: #1e40af;
@@ -51,14 +82,22 @@
   --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+/* ✅ Mobile font scaling */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
 }
 
 body {
@@ -66,7 +105,6 @@ body {
   background: var(--gradient-bg);
   color: var(--text-primary);
   line-height: 1.6;
-  overflow-x: hidden;
   position: relative;
   z-index: 1;
 }
@@ -120,4 +158,27 @@ div[class*="card"] {
   backdrop-filter: blur(25px) !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
   box-shadow: var(--shadow-xl) !important;
+}
+
+/* ✅ Additional mobile fixes */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+  
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }

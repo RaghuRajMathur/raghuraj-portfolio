@@ -11,14 +11,6 @@ const experienceData = [
     location: 'Remote',
     type: 'Internship',
     description: 'Developed a comprehensive stock data analysis application using Java and Spring Boot framework, implementing advanced data processing algorithms and creating interactive visualizations for financial market analysis.',
-    achievements: [
-      'Built stock data analysis platform with real-time processing capabilities',
-      'Implemented technical analysis algorithms for market trend prediction',
-      'Created interactive data visualization charts using JfreeChart',
-      'Developed RESTful APIs for efficient data retrieval and processing',
-      'Optimized database queries resulting in 40% performance improvement',
-      'Collaborated with senior developers on code reviews and best practices'
-    ],
     technologies: ['Java', 'Spring Boot', 'MySQL', 'JfreeChart', 'Git']
   },
   {
@@ -29,14 +21,6 @@ const experienceData = [
     location: 'Remote',
     type: 'Internship',
     description: 'Focused on frontend design and UI enhancements using React.js, Next.js, HTML, CSS, and JavaScript. Successfully improved interface responsiveness and developed interactive web components.',
-    achievements: [
-      'Improved interface responsiveness by 20% through optimized code and layout adjustments',
-      'Developed interactive web components that enhanced user engagement',
-      'Applied modern frontend design principles to create user-friendly interfaces',
-      'Collaborated with development team on UI enhancement projects',
-      'Gained hands-on experience with responsive design techniques',
-      'Contributed to improving overall user experience across web applications'
-    ],
     technologies: ['React.js', 'Next.js', 'HTML5', 'CSS3', 'JavaScript', 'Frontend Design', 'Responsive Design']
   }
 ];
@@ -83,7 +67,7 @@ const leadershipData = [
 const educationData = [
   {
     id: 'bca',
-    institution: 'Jagannath International Management School (JIMS)',
+    institution: 'Jagannath International Management School (JIMS), Vasant Kunj-I - GGSIPU',
     degree: 'Bachelor of Computer Applications (BCA)',
     field: 'Computer Applications',
     duration: '2022 – 2025',
@@ -163,18 +147,6 @@ export default function Experience() {
                   </div>
                   <p className={styles.experienceDescription}>{exp.description}</p>
                   
-                  <div className={styles.achievements}>
-                    <h6>Key Achievements:</h6>
-                    <ul>
-                      {exp.achievements.map((achievement, i) => (
-                        <li key={i}>
-                          <span className={styles.checkIcon}>✓</span>
-                          <span>{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
                   <div className={styles.technologies}>
                     <h6>Technologies Used:</h6>
                     <div className={styles.techTags}>
@@ -220,7 +192,6 @@ export default function Experience() {
                     <ul>
                       {exp.achievements.map((achievement, i) => (
                         <li key={i}>
-                          <span className={styles.checkIcon}>✓</span>
                           <span>{achievement}</span>
                         </li>
                       ))}
@@ -258,18 +229,6 @@ export default function Experience() {
                   <span className={styles.cgpaValue}>{edu.cgpa}</span>
                 </div>
                 <p className={styles.educationDescription}>{edu.description}</p>
-                
-                <div className={styles.highlights}>
-                  <h6>Key Highlights:</h6>
-                  <ul>
-                    {edu.highlights.map((highlight, i) => (
-                      <li key={i}>
-                        <span className={styles.checkIcon}>✓</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             ))}
           </div>

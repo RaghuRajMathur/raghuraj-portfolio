@@ -386,19 +386,6 @@
   transform: translateX(5px);
 }
 
-.checkIcon {
-  color: #10b981;
-  font-weight: bold;
-  font-size: 0.9rem;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(16, 185, 129, 0.15);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
 
 .projectFeatures li span:last-child {
   color: var(--text-secondary);
