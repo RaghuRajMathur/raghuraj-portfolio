@@ -12,12 +12,9 @@ const projectsData = [
       "I built MacroForge to solve a real problem I experienced - finding accurate nutrition guidance without expensive apps. This Next.js web app calculates personalized macro targets, creates custom workout plans, and generates downloadable reports. The focus was on making complex nutritional science simple and accessible.",
     image: "/macroforge.png",
     tech: [
-      "Next.js 14",
-      "React",
-      "JavaScript",
-      "CSS3",
+      "Next.js",
+      "Tailwind CSS",
       "Recharts",
-      "PDF Generation",
     ],
     features: [
       "Clean, responsive interface built with Next.js",
@@ -27,7 +24,6 @@ const projectsData = [
     ],
     liveUrl: "https://macro-forge-calculator.vercel.app/",
     githubUrl: "https://github.com/RaghuRajMathur/MacroForge-calculator",
-    category: "Full Stack",
   },
   {
     id: "portfolio-website",
@@ -37,10 +33,8 @@ const projectsData = [
     image: "/portfolio.png",
     tech: [
       "Next.js",
-      "React",
-      "CSS Modules",
-      "JavaScript",
-      "Scroll Animations",
+      "Tailwind CSS",
+      "TsParticles"
     ],
     features: [
       "Mobile-first design that looks great on any device",
@@ -52,7 +46,6 @@ const projectsData = [
     ],
     liveUrl: "https://raghurajmathur-portfolio.vercel.app/",
     githubUrl: "https://github.com/RaghuRajMathur/raghuraj-portfolio",
-    category: "Frontend",
     impact:
       "Professional showcase that effectively represents my skills and personality",
   },
@@ -108,9 +101,6 @@ export default function Projects() {
                   <span className={styles.projectNavTitle}>
                     {project.title}
                   </span>
-                  <span className={styles.projectNavCategory}>
-                    {project.category}
-                  </span>
                 </div>
               </button>
             ))}
@@ -124,9 +114,6 @@ export default function Projects() {
                   <h3 className={styles.projectTitle}>
                     {currentProject.title}
                   </h3>
-                  <span className={styles.projectCategory}>
-                    {currentProject.category}
-                  </span>
                 </div>
                 <p className={styles.projectDescription}>
                   {currentProject.description}
