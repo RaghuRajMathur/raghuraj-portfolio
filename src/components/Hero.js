@@ -52,7 +52,7 @@ export default function Hero() {
             </h1>
             
             <p className={styles.heroDescription}>
-              I&apos;m a passionate BCA final-year student and aspiring frontend developer from North Delhi, India. 
+              I&apos;m a  BCA Graduate and aspiring Web developer from Delhi, India. 
               With expertise in HTML, CSS, JavaScript, React, Next.js, and backend technologies like Java and Python, 
               I create modern, responsive web applications that deliver exceptional user experiences.
             </p>
