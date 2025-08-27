@@ -17,9 +17,9 @@ export default function About() {
 
         <div className={styles.aboutContent}>
           <div className={styles.aboutText}>
-            <h3>Aspiring Frontend Developer & Tech Enthusiast</h3>
+            <h3>Aspiring Web Developer & Tech Enthusiast</h3>
             <p>
-              I&apos;m RaghuRaj Mathur, an aspiring frontend developer and final-year BCA student from North Delhi, India. 
+              I&apos;m RaghuRaj Mathur, an aspiring Web developer and BCA Graduate from Delhi, India. 
               With strong technical skills in HTML, CSS, JavaScript, React, Next.js, and Node.js, I&apos;m passionate about 
               creating responsive, user-focused web applications that solve real-world problems.
             </p>
@@ -37,7 +37,7 @@ export default function About() {
             <div className={styles.personalInfo}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Location:</span>
-                <span>North Delhi, India</span>
+                <span>Delhi, India</span>
               </div>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Email:</span>
@@ -49,7 +49,7 @@ export default function About() {
               </div>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Status:</span>
-                <span>Available for frontend opportunities</span>
+                <span>Available for opportunities</span>
               </div>
             </div>
           </div>
