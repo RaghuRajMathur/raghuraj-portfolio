@@ -15,9 +15,9 @@ export default function Portfolio() {
       <ParticlesComponent />
       <Hero />
       <About />
-      <Skills />
-      <Projects />
       <Experience />
+      <Projects />
+      <Skills />
       <Contact />
       <Footer />
     </main>
