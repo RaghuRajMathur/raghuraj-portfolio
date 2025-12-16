@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Security Headers
   async headers() {
     return [
       {
@@ -29,12 +30,12 @@ const nextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=63072000; includeSubDomains; preload',
           },
-          // STRICTER CSP for A+ rating
+          // ENHANCED Content Security Policy
           {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'strict-dynamic' https://fonts.googleapis.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "img-src 'self' data: https: blob:",
               "font-src 'self' data: https://fonts.gstatic.com",
@@ -48,6 +49,7 @@ const nextConfig = {
               "block-all-mixed-content",
             ].join('; '),
           },
+          // Additional Security Headers
           {
             key: 'X-DNS-Prefetch-Control',
             value: 'on',
@@ -67,6 +69,8 @@ const nextConfig = {
   
   reactStrictMode: true,
   swcMinify: true,
+  
+  // Disable x-powered-by header
   poweredByHeader: false,
 };
 

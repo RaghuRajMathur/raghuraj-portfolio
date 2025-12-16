@@ -31,7 +31,7 @@ export default function Projects() {
   const projects = [
     {
       title: 'Secure Portfolio Website | Next.js, Security Headers, Input Validation',
-      description: 'Personal portfolio showcasing pentesting projects and security analysis work. Built with Next.js and Three.js.',
+      description: 'Developed a security-hardened portfolio with XSS prevention, rate limiting, CSP implementation, and comprehensive input sanitization achieving ',
       image: '/project1.png',
       tags: ['Next.js', 'React', 'Three.js', 'Tailwind CSS'],
       liveLink: 'https://raghurajmathur-portfolio.vercel.app/',
