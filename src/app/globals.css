@@ -9,10 +9,10 @@
 
 :root {
   /* Modern Cybersecurity Theme - Dark Mode */
-  --bg-primary: #0f1419;
-  --bg-secondary: #1a1f2e;
-  --bg-tertiary: #242b3d;
-  --bg-card: #1e2433;
+  --bg-primary: #0a0e1a;
+  --bg-secondary: rgba(26, 31, 46, 0.7);
+  --bg-tertiary: rgba(36, 43, 61, 0.6);
+  --bg-card: rgba(30, 36, 51, 0.8);
   
   --text-primary: #64ffda;
   --text-secondary: #e2e8f0;
@@ -38,10 +38,10 @@
 
 /* Light Mode - PROFESSIONAL & CLEAN */
 [data-theme="light"] {
-  --bg-primary: #fafbfc;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #f3f4f6;
-  --bg-card: #ffffff;
+  --bg-primary: #f5f7fa;
+  --bg-secondary: rgba(255, 255, 255, 0.9);
+  --bg-tertiary: rgba(241, 245, 249, 0.8);
+  --bg-card: rgba(255, 255, 255, 0.95);
   
   --text-primary: #0891b2;
   --text-secondary: #0f172a;
@@ -80,38 +80,45 @@ body {
   position: relative;
 }
 
-/* Animated grid background */
+/* ===== CYBERSECURITY ANIMATED BACKGROUND ===== */
+
+/* Layer 1: Animated Gradient Background */
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(var(--border-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
-  background-size: 50px 50px;
-  opacity: 0.3;
-  pointer-events: none;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(167, 139, 250, 0.06) 0%, transparent 50%);
+  animation: float 20s ease-in-out infinite;
   z-index: 0;
-  animation: gridMove 20s linear infinite;
+  pointer-events: none;
 }
 
 [data-theme="light"] body::before {
-  opacity: 0.15;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(8, 145, 178, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(124, 58, 237, 0.04) 0%, transparent 50%);
 }
 
-@keyframes gridMove {
-  0% {
-    transform: translate(0, 0);
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
   }
-  100% {
-    transform: translate(50px, 50px);
+  33% {
+    transform: translate(30px, -30px) rotate(5deg);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(-5deg);
   }
 }
 
-/* Scanline effect - only in dark mode */
+/* Layer 2: Minimalist Grid Pattern */
 body::after {
   content: '';
   position: fixed;
@@ -119,27 +126,161 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent 50%,
-    rgba(100, 255, 218, 0.02) 50%
-  );
-  background-size: 100% 4px;
-  pointer-events: none;
+  background-image: 
+    linear-gradient(rgba(100, 255, 218, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: gridSlide 30s linear infinite;
   z-index: 1;
-  animation: scanline 8s linear infinite;
+  pointer-events: none;
 }
 
 [data-theme="light"] body::after {
-  display: none;
+  background-image: 
+    linear-gradient(rgba(8, 145, 178, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 145, 178, 0.04) 1px, transparent 1px);
 }
 
-@keyframes scanline {
+@keyframes gridSlide {
   0% {
-    transform: translateY(0);
+    transform: translate(0, 0);
   }
   100% {
-    transform: translateY(100%);
+    transform: translate(80px, 80px);
+  }
+}
+
+/* Layer 3: Binary Code Rain Effect (HIGHLY VISIBLE) */
+.cyber-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Multiple binary streams - MORE VISIBLE */
+.cyber-rain span {
+  position: absolute;
+  top: -100%;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(100, 255, 218, 0.35);
+  white-space: nowrap;
+  animation: rainFall linear infinite;
+  letter-spacing: 4px;
+  text-shadow: 
+    0 0 10px rgba(100, 255, 218, 0.6),
+    0 0 20px rgba(100, 255, 218, 0.4),
+    0 0 30px rgba(100, 255, 218, 0.2);
+}
+
+[data-theme="light"] .cyber-rain span {
+  color: rgba(8, 145, 178, 0.25);
+  text-shadow: 
+    0 0 8px rgba(8, 145, 178, 0.4),
+    0 0 15px rgba(8, 145, 178, 0.3);
+}
+
+.cyber-rain span:nth-child(1) {
+  left: 5%;
+  animation-duration: 12s;
+  animation-delay: 0s;
+}
+
+.cyber-rain span:nth-child(2) {
+  left: 15%;
+  animation-duration: 16s;
+  animation-delay: 2s;
+}
+
+.cyber-rain span:nth-child(3) {
+  left: 25%;
+  animation-duration: 14s;
+  animation-delay: 4s;
+}
+
+.cyber-rain span:nth-child(4) {
+  left: 35%;
+  animation-duration: 18s;
+  animation-delay: 1s;
+}
+
+.cyber-rain span:nth-child(5) {
+  left: 45%;
+  animation-duration: 13s;
+  animation-delay: 3s;
+}
+
+.cyber-rain span:nth-child(6) {
+  left: 55%;
+  animation-duration: 15s;
+  animation-delay: 5s;
+}
+
+.cyber-rain span:nth-child(7) {
+  left: 65%;
+  animation-duration: 17s;
+  animation-delay: 2.5s;
+}
+
+.cyber-rain span:nth-child(8) {
+  left: 75%;
+  animation-duration: 14s;
+  animation-delay: 4.5s;
+}
+
+.cyber-rain span:nth-child(9) {
+  left: 85%;
+  animation-duration: 19s;
+  animation-delay: 1.5s;
+}
+
+.cyber-rain span:nth-child(10) {
+  left: 95%;
+  animation-duration: 16s;
+  animation-delay: 3.5s;
+}
+
+@keyframes rainFall {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+/* Simplify rain on mobile for performance */
+@media (max-width: 768px) {
+  .cyber-rain span {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+  
+  .cyber-rain span:nth-child(n+6) {
+    display: none;
+  }
+}
+
+/* Disable animations on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after,
+  .cyber-rain span {
+    animation: none !important;
   }
 }
 
@@ -210,7 +351,7 @@ code, .mono {
   border-radius: 3px;
 }
 
-/* Section Styling */
+/* Section Styling - TRANSPARENT BLUR BACKGROUNDS */
 section {
   padding: 50px 24px;
   position: relative;
@@ -219,6 +360,24 @@ section {
   justify-content: center;
   align-items: center;
   z-index: 2;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Alternating section backgrounds for depth */
+section:nth-child(even) {
+  background: rgba(30, 36, 51, 0.65);
+}
+
+[data-theme="light"] section {
+  background: var(--bg-secondary);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] section:nth-child(even) {
+  background: rgba(241, 245, 249, 0.75);
 }
 
 .container {
@@ -226,6 +385,8 @@ section {
   width: 100%;
   margin: 0 auto;
   padding: 0 24px;
+  position: relative;
+  z-index: 3;
 }
 
 .container-wide {
@@ -233,6 +394,8 @@ section {
   width: 100%;
   margin: 0 auto;
   padding: 0 24px;
+  position: relative;
+  z-index: 3;
 }
 
 /* Section Headers with terminal style */
@@ -300,7 +463,7 @@ section {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
   border-left: 1px solid var(--border-color);
 }
 
@@ -373,6 +536,15 @@ section {
     font-size: 1.75rem;
     margin-bottom: 1.5rem;
   }
+
+  /* Simplify animations on mobile */
+  body::before {
+    animation-duration: 30s;
+  }
+
+  body::after {
+    background-size: 50px 50px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -405,7 +577,23 @@ section {
   }
   
   body::before,
-  body::after {
+  body::after,
+  .cyber-rain span {
     animation: none !important;
   }
+}
+
+/* ===== SPHERE SECTION OVERRIDES ===== */
+/* Completely disable global section styles for sphere */
+section[class*="sphereSection"] {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+section[class*="sphereSection"]::before,
+section[class*="sphereSection"]::after {
+  display: none !important;
 }

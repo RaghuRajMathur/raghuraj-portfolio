@@ -76,7 +76,7 @@ function fibonacciSphere(samples, radius) {
 }
 
 // Individual skill icon component
-function SkillIcon({ position, skill, index }) {
+function SkillIcon({ position, skill, index, onHover }) {
   const groupRef = useRef();
   const [hovered, setHovered] = useState(false);
 
@@ -90,6 +90,16 @@ function SkillIcon({ position, skill, index }) {
       groupRef.current.scale.setScalar(scale);
     }
   });
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+    onHover(skill.name);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+    onHover(null);
+  };
 
   return (
     <group ref={groupRef} position={position}>
@@ -105,13 +115,12 @@ function SkillIcon({ position, skill, index }) {
       >
         <div 
           className={styles.iconWrapper}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <img
             src={skill.icon}
             alt={skill.name}
-            title={skill.name}
             className={styles.icon}
           />
         </div>
@@ -121,10 +130,10 @@ function SkillIcon({ position, skill, index }) {
 }
 
 // Main rotating sphere component
-function RotatingSphere() {
+function RotatingSphere({ onHover }) {
   const groupRef = useRef();
   const allSkills = getAllSkills();
-  const radius = 4.5; // Sphere radius
+  const radius = 5.5; // Sphere radius
   const positions = fibonacciSphere(allSkills.length, radius);
 
   useFrame((state, delta) => {
@@ -151,6 +160,7 @@ function RotatingSphere() {
             position={positions[index]}
             skill={skill}
             index={index}
+            onHover={onHover}
           />
         ))}
       </group>
@@ -170,8 +180,8 @@ function Loader() {
   );
 }
 
-// Main component
-export default function SkillsSphere3D() {
+// Main component - receives onHover from parent
+export default function SkillsSphere3D({ onHover }) {
   return (
     <div className={styles.canvasContainer}>
       <Canvas
@@ -203,7 +213,7 @@ export default function SkillsSphere3D() {
 
         {/* 3D Sphere */}
         <Suspense fallback={<Loader />}>
-          <RotatingSphere />
+          <RotatingSphere onHover={onHover} />
         </Suspense>
       </Canvas>
 
