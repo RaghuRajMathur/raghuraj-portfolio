@@ -1,25 +1,23 @@
-import Header from '../components/Header';
 import Hero from '../components/Hero';
-import About from '../components/About';
-import Skills from '../components/Skills';
-import Projects from '../components/Projects';
+import SkillsSphereSection from '../components/SkillsSphereSection';
+import Education from '../components/Education';
 import Experience from '../components/Experience';
-import Contact from '../components/Contact';
+import Projects from '../components/Projects';
+import ContactForm from '../components/Contactform';
 import Footer from '../components/Footer';
-import ParticlesComponent from '@/components/ParticlesBackground';
 
-export default function Portfolio() {
+export default function Home() {
   return (
-    <main className="portfolio">
-      <Header />
-      <ParticlesComponent />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Contact />
+    <>
+      <main>
+        <Hero />
+        <SkillsSphereSection />
+        <Education />
+        <Experience />
+        <Projects />
+        <ContactForm />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

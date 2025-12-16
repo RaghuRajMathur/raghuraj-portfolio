@@ -1,0 +1,41 @@
+.themeToggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  color: var(--text-primary);
+}
+
+.themeToggle:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--shadow-glow);
+  transform: scale(1.05);
+}
+
+.themeToggle svg {
+  transition: transform 0.3s ease;
+}
+
+.themeToggle:hover svg {
+  transform: rotate(20deg);
+}
+
+@media (max-width: 768px) {
+  .themeToggle {
+    width: 44px;
+    height: 44px;
+    top: 1rem;
+    right: 1rem;
+  }
+}

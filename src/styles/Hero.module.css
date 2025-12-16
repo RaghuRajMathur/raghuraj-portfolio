@@ -1,445 +1,223 @@
 .hero {
-  padding: 140px 3rem 100px;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: transparent;
-  backdrop-filter: blur(2px);
+  justify-content: center;
+  padding: 20px 24px;
+  background-color: var(--bg-primary);
   position: relative;
   overflow: hidden;
-  z-index: 2; /* Ensure hero is above particles */
+}
+
+/* Animated corner brackets */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 2px solid var(--accent-green);
+  opacity: 0.3;
+  z-index: 0;
 }
 
 .hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -30%;
-  width: 150%;
-  height: 150%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-  animation: float 20s ease-in-out infinite;
-  z-index: -1; /* Keep background behind content */
+  top: 40px;
+  left: 40px;
+  border-right: none;
+  border-bottom: none;
+  animation: pulseCorner 3s ease-in-out infinite;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
+.hero::after {
+  bottom: 40px;
+  right: 40px;
+  border-left: none;
+  border-top: none;
+  animation: pulseCorner 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes pulseCorner {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
 }
 
 .container {
-  width: 100%;
-  max-width: 1400px;
+  max-width: 1100px;
   margin: 0 auto;
+  width: 100%;
   position: relative;
-  z-index: 3; /* Higher than hero section */
+  z-index: 2;
 }
 
 .heroContent {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 6rem;
+  grid-template-columns: 1fr 280px;
+  gap: 60px;
   align-items: center;
 }
 
-.heroText {
+.textSide {
   text-align: left;
-  background: var(--bg-glass);
-  backdrop-filter: blur(20px);
-  padding: 4rem 3.5rem;
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: var(--shadow-xl);
-  position: relative;
-  z-index: 4; /* Ensure text container is above background */
 }
 
-.heroText::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 2px;
-  background: var(--gradient-primary);
-  border-radius: inherit;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  opacity: 0.3;
-  z-index: -1; /* Keep border effect behind content */
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  background: var(--gradient-secondary);
-  color: var(--text-white);
-  padding: 0.75rem 2rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-md);
-  animation: bounce 2s ease-in-out infinite;
-  position: relative;
-  z-index: 5;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-10px); }
-  60% { transform: translateY(-5px); }
-}
-
-/* Significantly reduced title size to prevent wrapping */
-.heroTitle {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem); /* Reduced from 2.8rem-4.2rem to 1.8rem-2.8rem */
-  font-weight: 900;
-  line-height: 1.2; /* Slightly increased for better readability */
-  margin-bottom: 2rem;
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
   color: var(--text-primary);
-  letter-spacing: -0.025em;
-  position: relative;
-  z-index: 5;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  text-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+  font-family: 'Space Mono', monospace;
 }
 
-/* Simplified typing container without fixed width */
-.typingContainer {
-  display: inline-block;
-  position: relative;
-  white-space: nowrap; /* Prevent text wrapping */
-}
-
-.typedText {
-  display: inline;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-size: clamp(1.4rem, 2.8vw, 2.2rem); /* Smaller than main title */
-  font-weight: 800;
-}
-
-.gradientText {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
-  display: inline-block;
-  font-size: clamp(1.4rem, 2.8vw, 2.2rem); /* Match typed text size */
-  font-weight: 800;
-  white-space: nowrap; /* Prevent wrapping */
-}
-
-.gradientText::before {
-  content: "I Build Responsive Websites"; /* Updated to longest text */
-  position: absolute;
-  top: 0;
-  left: 0;
-  visibility: hidden;
-  white-space: nowrap;
-  width: 100%;
-  height: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -1;
-  font-weight: inherit;
-  font-size: inherit;
-}
-
-.cursor {
-  color: var(--accent-blue);
-  font-weight: 900;
-  animation: blink 1s step-start infinite;
-  display: inline;
-  margin-left: 2px;
-  -webkit-text-fill-color: var(--accent-blue);
-  font-size: clamp(1.4rem, 2.8vw, 2.2rem); /* Match text size */
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-.heroDescription {
-  font-size: 1.1rem; /* Slightly reduced from 1.25rem */
-  line-height: 1.7;
+.description {
+  font-size: 1.0625rem;
+  line-height: 1.8;
   color: var(--text-secondary);
-  margin-bottom: 3rem;
-  max-width: 550px;
-  position: relative;
-  z-index: 5;
+  margin-bottom: 0;
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(10px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'JetBrains Mono', monospace;
 }
 
-.heroActions {
+.description.blurFadeIn {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Photo with hexagon frame */
+.photoSide {
   display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 10; /* Highest z-index for buttons */
-}
-
-.primaryBtn {
-  background: var(--gradient-primary);
-  color: var(--text-white);
-  text-decoration: none;
-  padding: 1rem 2rem; /* Slightly reduced padding */
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 1rem; /* Reduced from 1.1rem */
-  transition: var(--transition-smooth);
-  box-shadow: var(--shadow-lg);
-  position: relative;
-  overflow: hidden;
-  z-index: 11; /* Even higher for individual buttons */
-  cursor: pointer;
-  pointer-events: auto; /* Ensure pointer events work */
-}
-
-.primaryBtn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: var(--transition-slow);
-  z-index: -1; /* Keep shimmer effect behind text */
-}
-
-.primaryBtn:hover::before {
-  left: 100%;
-}
-
-.primaryBtn:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-blue);
-}
-
-.secondaryBtn {
-  background: var(--bg-card);
-  color: var(--primary-blue);
-  text-decoration: none;
-  padding: 1rem 2rem; /* Slightly reduced padding */
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 1rem; /* Reduced from 1.1rem */
-  border: 2px solid var(--primary-blue);
-  transition: var(--transition-smooth);
-  box-shadow: var(--shadow-md);
-  position: relative;
-  z-index: 11; /* Same high z-index as primary button */
-  cursor: pointer;
-  pointer-events: auto; /* Ensure pointer events work */
-}
-
-.secondaryBtn:hover {
-  background: var(--primary-blue);
-  color: var(--text-white);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-blue);
-}
-
-.heroVisual {
-  display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 4;
 }
 
-.profileContainer {
+.profilePhoto {
+  width: 280px;
+  height: 280px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 3rem;
-  z-index: 5;
+}
+
+.profilePhoto::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: var(--accent-green);
+  z-index: -1;
+  animation: hexGlow 3s ease-in-out infinite;
 }
 
 .profileImage {
-  position: relative; /* Required for Next.js Image fill */
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: var(--gradient-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-white);
-  font-weight: 600;
-  font-size: 1.2rem;
-  box-shadow: var(--shadow-xl);
-  overflow: hidden; /* Ensures image stays within circle */
-  z-index: 6;
-}
-
-.profileImage::before {
-  content: '';
-  position: absolute;
-  inset: -5px;
-  background: var(--gradient-primary);
-  border-radius: 50%;
-  z-index: -1;
-  animation: rotate 10s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Ensure the image covers the container properly */
-.profileImage img {
-  border-radius: 50% !important;
-  z-index: 1;
-}
-
-.profilePlaceholder {
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-  gap: 0.5rem;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.techStack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  max-width: 400px;
-  justify-content: flex-end;
-  z-index: 5;
-  position: relative;
+.profilePhoto:hover .profileImage {
+  transform: scale(1.05);
 }
 
-.techItem {
-  background: var(--bg-glass);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--primary-blue);
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radius-full);
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: var(--transition-smooth);
-  box-shadow: var(--shadow-sm);
-  position: relative;
-  z-index: 6;
+/* Fade In Animation */
+.fadeIn {
+  animation: fadeIn 1s ease-out;
 }
 
-.techItem:hover {
-  background: var(--primary-blue);
-  color: var(--text-white);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* Ensure all interactive elements work */
-.heroActions * {
-  pointer-events: auto;
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 1024px) {
   .heroContent {
-    grid-template-columns: 1fr;
-    gap: 4rem;
-    text-align: left;
+    grid-template-columns: 1fr 240px;
+    gap: 50px;
   }
-  
-  .profileContainer {
-    align-items: center;
+
+  .profilePhoto {
+    width: 240px;
+    height: 240px;
   }
-  
-  .techStack {
-    justify-content: center;
+
+  .title {
+    font-size: 2.5rem;
   }
 }
 
 @media (max-width: 768px) {
-  .hero {
-    padding: 120px 1.5rem 80px;
+  .hero::before,
+  .hero::after {
+    width: 60px;
+    height: 60px;
   }
-  
-  .heroText {
-    padding: 2.5rem 1.5rem; /* Reduced padding */
+
+  .hero::before {
+    top: 20px;
+    left: 20px;
   }
-  
-  .heroActions {
-    flex-direction: column;
-    align-items: flex-start;
+
+  .hero::after {
+    bottom: 20px;
+    right: 20px;
   }
-  
-  .primaryBtn,
-  .secondaryBtn {
-    width: 100%;
-    max-width: 280px; /* Slightly smaller max width */
+
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: 40px;
     text-align: center;
-    padding: 0.9rem 1.8rem; /* Smaller buttons */
-    font-size: 0.9rem;
   }
-  
-  .profileImage {
-    width: 220px; /* Smaller profile image */
+
+  .textSide {
+    text-align: center;
+  }
+
+  .photoSide {
+    order: -1;
+  }
+
+  .profilePhoto {
+    width: 220px;
     height: 220px;
   }
-  
-  .heroTitle {
-    font-size: clamp(1.5rem, 4vw, 2.2rem); /* Further reduced for mobile */
+
+  .title {
+    font-size: 2.25rem;
   }
-  
-  .typedText,
-  .gradientText,
-  .cursor {
-    font-size: clamp(1.2rem, 3.5vw, 1.8rem); /* Smaller typing text on mobile */
-  }
-  
-  .heroDescription {
-    font-size: 1rem; /* Smaller description */
+
+  .description {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .heroText {
-    padding: 2rem 1rem;
-  }
-  
-  .heroTitle {
-    font-size: clamp(1.3rem, 4vw, 1.9rem); /* Even smaller for very small screens */
-  }
-  
-  .typedText,
-  .gradientText,
-  .cursor {
-    font-size: clamp(1rem, 3vw, 1.5rem); /* Very small typing text */
-  }
-  
-  .heroDescription {
-    font-size: 0.95rem;
-  }
-  
-  .profileImage {
+  .profilePhoto {
     width: 180px;
     height: 180px;
   }
-}
 
-/* Ultra small screens */
-@media (max-width: 320px) {
-  .heroTitle {
-    font-size: clamp(1.1rem, 4vw, 1.6rem);
+  .title {
+    font-size: 1.75rem;
   }
-  
-  .typedText,
-  .gradientText,
-  .cursor {
-    font-size: clamp(0.9rem, 3vw, 1.3rem);
+
+  .description {
+    font-size: 0.9375rem;
   }
 }

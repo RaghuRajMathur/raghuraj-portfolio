@@ -1,0 +1,68 @@
+.sphereSection {
+  padding: 100px 24px;
+  background-color: var(--bg-primary);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.container {
+  max-width: var(--max-width-wide);
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.sphereWrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+@media (max-width: 768px) {
+  .sphereSection {
+    padding: 80px 20px;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .description {
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sphereSection {
+    padding: 60px 16px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+}

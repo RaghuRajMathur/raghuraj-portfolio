@@ -1,191 +1,107 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
-import styles from "../styles/Projects.module.css";
-
-const projectsData = [
-  {
-    id: "macroforge",
-    title: "MacroForge – Professional Macro Calculator",
-    description:
-      "I built MacroForge to solve a real problem I experienced - finding accurate nutrition guidance without expensive apps. This Next.js web app calculates personalized macro targets, creates custom workout plans, and generates downloadable reports. The focus was on making complex nutritional science simple and accessible.",
-    image: "/macroforge.png",
-    tech: [
-      "Next.js",
-      "Tailwind CSS",
-      "Recharts",
-    ],
-    features: [
-      "Clean, responsive interface built with Next.js",
-      "PDF reports users can save and share",
-      "Interactive charts that make data easy to understand",
-      "Works perfectly on mobile - tested on my own phone daily",
-    ],
-    liveUrl: "https://macro-forge-calculator.vercel.app/",
-    githubUrl: "https://github.com/RaghuRajMathur/MacroForge-calculator",
-  },
-  {
-    id: "portfolio-website",
-    title: "Personal Portfolio Website",
-    description:
-      "My portfolio needed to represent who I am as a developer - someone who cares about clean code, great design, and user experience. Built with Next.js and modern web standards, it showcases my projects with smooth animations and responsive design that works beautifully everywhere.",
-    image: "/portfolio.png",
-    tech: [
-      "Next.js",
-      "Tailwind CSS",
-      "TsParticles"
-    ],
-    features: [
-      "Mobile-first design that looks great on any device",
-      "Smooth scroll animations that feel natural, not gimmicky",
-      "Fast loading with optimized images and performance",
-      "Clean, professional design that lets my work shine",
-      "SEO optimized so people can actually find it",
-      "Contact form that works - messages come straight to me",
-    ],
-    liveUrl: "https://raghurajmathur-portfolio.vercel.app/",
-    githubUrl: "https://github.com/RaghuRajMathur/raghuraj-portfolio",
-    impact:
-      "Professional showcase that effectively represents my skills and personality",
-  },
-];
+import { useEffect, useRef, useState } from 'react';
+import styles from '../styles/Projects.module.css';
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState("macroforge");
-  const [filter] = useState("all");
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-  const currentProject = projectsData.find((p) => p.id === activeProject);
-  const filteredProjects =
-    filter === "all"
-      ? projectsData
-      : projectsData.filter(
-          (project) => project.category.toLowerCase() === filter
-        );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  const projects = [
+    {
+      title: 'Cybersecurity Portfolio',
+      description: 'Personal portfolio showcasing pentesting projects and security analysis work. Built with Next.js and Three.js.',
+      image: '/Project1.png',
+      tags: ['Next.js', 'React', 'Three.js', 'Tailwind CSS'],
+      liveLink: 'https://yourportfolio.com',
+      githubLink: 'https://github.com/yourusername/portfolio'
+    }
+  ];
 
   return (
-    <section id="projects" className={styles.projects}>
+    <section id="projects" ref={sectionRef} className={styles.projects}>
       <div className={styles.container}>
-        <div className={styles.sectionHeader}>
-          <div className={styles.badge}>
-            <span>My Portfolio</span>
-          </div>
-          <h2 className={styles.sectionTitle}>
-            Featured{" "}
-            <span className={`${styles.gradientText} pulse-text`}>
-              Projects
-            </span>
-          </h2>
-          <p className={styles.sectionDescription}>
-            A showcase of my recent projects that demonstrate my skills in
-            frontend development, problem-solving, and creating impactful
-            digital solutions.
-          </p>
-        </div>
+        <p className="section-title">My Work</p>
+        <h2 className="section-heading">Projects</h2>
 
-        <div className={styles.projectsContainer}>
-          {/* Project Navigation */}
-          <div className={styles.projectsNav}>
-            {filteredProjects.map((project, index) => (
-              <button
-                key={project.id}
-                className={`${styles.projectNavBtn} ${
-                  activeProject === project.id ? styles.active : ""
-                }`}
-                onClick={() => setActiveProject(project.id)}
-              >
-                <span className={styles.projectNumber}>
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div className={styles.projectNavContent}>
-                  <span className={styles.projectNavTitle}>
-                    {project.title}
-                  </span>
-                </div>
-              </button>
-            ))}
-          </div>
-
-          {/* Project Display */}
-          <div className={styles.projectDisplay}>
-            <div className={styles.projectContent}>
-              <div className={styles.projectInfo}>
-                <div className={styles.projectHeader}>
-                  <h3 className={styles.projectTitle}>
-                    {currentProject.title}
-                  </h3>
-                </div>
-                <p className={styles.projectDescription}>
-                  {currentProject.description}
-                </p>
-                <div className={styles.projectFeatures}>
-                  <h4>Key Features :</h4>
-                  <ul>
-                    {currentProject.features.map((feature, index) => (
-                      <li key={index}>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+        <div className={styles.projectsGrid}>
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className={styles.projectCard}
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: `all 0.6s ease-out ${index * 0.2}s`
+              }}
+            >
+              <img
+                src={project.image}
+                alt={project.title}
+                className={styles.projectImage}
+              />
+              
+              <div className={styles.projectContent}>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <p className={styles.projectDescription}>{project.description}</p>
+                
+                <div className={styles.projectTags}>
+                  {project.tags.map((tag, i) => (
+                    <span key={i} className={styles.tag}>{tag}</span>
+                  ))}
                 </div>
 
-                <div className={styles.projectActions}>
-                  {currentProject.liveUrl ? (
-                    <a
-                      href={currentProject.liveUrl}
-                      className={styles.primaryBtn}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View Live Demo
-                    </a>
-                  ) : (
-                    <span className={styles.comingSoon}>Live Demo</span>
-                  )}
+                <div className={styles.projectLinks}>
                   <a
-                    href={currentProject.githubUrl}
-                    className={styles.secondaryBtn}
+                    href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className={styles.projectLink}
                   >
-                    View Source Code
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                      <polyline points="15 3 21 3 21 9"/>
+                      <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                    Live Demo
+                  </a>
+                  
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.projectLink}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
                   </a>
                 </div>
               </div>
-
-              <div className={styles.projectVisual}>
-                <div className={styles.projectImageContainer}>
-                  {/* ✅ FIXED: Display image for any project that has an image */}
-                  {currentProject.image ? (
-                    <Image
-                      src={currentProject.image}
-                      alt={`${currentProject.title} Screenshot`}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      className={styles.projectImage}
-                    />
-                  ) : (
-                    <div className={styles.projectImagePlaceholder}>
-                      <span>Project Screenshot</span>
-                      <p>{currentProject.title}</p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Technologies section below the image */}
-                <div className={styles.projectTechSection}>
-                  <h4 className={styles.techTitle}>Technologies Used:</h4>
-                  <div className={styles.projectTech}>
-                    {currentProject.tech.map((tech, index) => (
-                      <span key={index} className={styles.techBadge}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

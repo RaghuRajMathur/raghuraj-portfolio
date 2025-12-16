@@ -1,392 +1,136 @@
 .skills {
-  padding: 100px 2rem;
-  background: transparent;
-  backdrop-filter: blur(2px);
-  position: relative;
-  z-index: 2; /* Ensure skills section is above particles */
+  padding: 80px 24px;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  position: relative;
-  z-index: 3; /* Higher than skills section */
 }
 
-.sectionHeader {
-  text-align: center;
-  margin-bottom: 5rem;
-  max-width: 800px;
-  margin: 0 auto 5rem auto;
-  position: relative;
-  z-index: 4;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  background: var(--gradient-secondary);
-  color: var(--text-white);
-  padding: 0.75rem 2rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-  box-shadow: var(--shadow-md);
-  position: relative;
-  z-index: 5;
-}
-
-.sectionTitle {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-  position: relative;
-  z-index: 5;
-}
-
-.gradientText {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.sectionDescription {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  max-width: 600px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 5;
-}
-
-.skillsContainer {
-  max-width: 1100px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 4;
-}
-
-.skillsDisplay {
-  background: var(--bg-glass);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl);
-  overflow: hidden;
-  transition: var(--transition-slow);
-  position: relative;
-  z-index: 5; /* Ensure display is above background */
-}
-
-.skillsDisplay::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 2px;
-  background: var(--gradient-primary);
-  border-radius: inherit;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  opacity: 0.1;
-  z-index: -1; /* Keep background effect behind content */
-}
-
-.skillsDisplay.transitioning {
-  opacity: 0.95;
-  transform: scale(0.998);
-}
-
-.skillsContent {
-  padding: 4rem 3rem;
-  position: relative;
-  z-index: 6;
-}
-
-.skillsText {
-  text-align: center;
-  margin-bottom: 3rem;
-  position: relative;
-  z-index: 7;
-}
-
-.skillsTitle {
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.025em;
-}
-
-.skillsDescription {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  max-width: 700px;
-  margin: 0 auto 3rem auto;
-}
-
-.skillsList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  position: relative;
-  z-index: 7;
-}
-
-.skillItem {
-  background: rgba(59, 130, 246, 0.05);
-  border: 1px solid rgba(59, 130, 246, 0.1);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  transition: var(--transition-smooth);
-  position: relative;
-  overflow: hidden;
-  z-index: 8;
-}
-
-.skillItem::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--gradient-primary);
-  transform: scaleX(0);
-  transition: var(--transition-smooth);
-  z-index: -1;
-}
-
-.skillItem:hover::before {
-  transform: scaleX(1);
-}
-
-.skillItem:hover {
-  background: rgba(59, 130, 246, 0.1);
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-}
-
-.skillHeader {
+.categoriesGrid {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.category {
+  width: 100%;
+}
+
+.categoryTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.iconsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.iconCard {
+  display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.iconCard:hover {
+  transform: scale(1.05);
+}
+
+.iconWrapper {
+  width: 68px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-secondary);
+  border-radius: 18px;
+  transition: all 0.2s ease;
+  padding: 12px;
+}
+
+.iconCard:hover .iconWrapper {
+  background-color: var(--bg-tertiary);
+  box-shadow: 0 4px 16px rgba(0, 255, 255, 0.15);
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .skillName {
-  font-weight: 700;
-  color: var(--text-primary);
-  font-size: 1.1rem;
-}
-
-.skillLevel {
-  font-weight: 800;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: var(--font-mono);
-  font-size: 1rem;
-}
-
-.skillBar {
-  height: 8px;
-  background: rgba(59, 130, 246, 0.15);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-  position: relative;
-}
-
-.skillProgress {
-  height: 100%;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-full);
-  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.skillProgress::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-/* FIXED: Skills Controls with proper z-index */
-.skillsControls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2.5rem;
-  padding: 2.5rem;
-  background: rgba(59, 130, 246, 0.03);
-  border-top: 1px solid rgba(59, 130, 246, 0.1);
-  position: relative;
-  z-index: 10; /* Highest z-index for controls */
-}
-
-/* FIXED: Navigation buttons with proper z-index */
-.navBtn {
-  background: var(--gradient-primary);
-  color: var(--text-white);
-  border: none;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  font-size: 1.4rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-md);
-  position: relative;
-  z-index: 11; /* Even higher for individual buttons */
-  pointer-events: auto; /* Ensure pointer events work */
-}
-
-.navBtn:hover:not(:disabled) {
-  transform: scale(1.1);
-  box-shadow: var(--shadow-blue);
-}
-
-.navBtn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* FIXED: Skills dots with proper z-index */
-.skillsDots {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  position: relative;
-  z-index: 11; /* Same high z-index as buttons */
-}
-
-/* FIXED: Individual dots with proper z-index */
-.dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: rgba(59, 130, 246, 0.3);
-  border: none;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  position: relative;
-  z-index: 12; /* Highest for individual dot buttons */
-  pointer-events: auto; /* Ensure pointer events work */
-}
-
-.dot:hover {
-  background: rgba(59, 130, 246, 0.6);
-  transform: scale(1.2);
-}
-
-.dot.activeDot {
-  background: var(--primary-blue);
-  transform: scale(1.4);
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-}
-
-.progressBar {
-  height: 4px;
-  background: rgba(59, 130, 246, 0.15);
-  position: relative;
-  overflow: hidden;
-  z-index: 6;
-}
-
-.progressFill {
-  height: 100%;
-  background: var(--gradient-primary);
-  transition: width 0.8s ease;
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
-}
-
-/* Ensure all interactive elements work */
-.skillsControls * {
-  pointer-events: auto;
-}
-
-/* Additional fix for potential overlay issues */
-.skillsContainer * {
-  pointer-events: auto;
+  display: none;
 }
 
 @media (max-width: 768px) {
   .skills {
-    padding: 80px 1rem;
+    padding: 60px 20px;
   }
-  
-  .skillsContent {
-    padding: 3rem 2rem;
+
+  .categoriesGrid {
+    gap: 32px;
   }
-  
-  .skillsList {
-    grid-template-columns: 1fr;
+
+  .categoryTitle {
+    font-size: 20px;
   }
-  
-  .skillsControls {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 2rem;
-    z-index: 10; /* Maintain high z-index on mobile */
+
+  .iconsGrid {
+    gap: 10px;
   }
-  
-  .skillsDots {
-    order: -1;
-    z-index: 11; /* Maintain high z-index on mobile */
-  }
-  
-  .navBtn {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-    z-index: 11; /* Maintain high z-index on mobile */
-  }
-  
-  .dot {
-    z-index: 12; /* Maintain highest z-index on mobile */
+
+  .iconWrapper {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 16px;
   }
 }
 
 @media (max-width: 480px) {
-  .skillsControls {
-    padding: 1.5rem;
-    gap: 1rem;
+  .skills {
+    padding: 50px 16px;
   }
-  
-  .navBtn {
-    width: 45px;
-    height: 45px;
-    font-size: 1.1rem;
+
+  .categoriesGrid {
+    gap: 28px;
   }
-  
-  .dot {
-    width: 12px;
-    height: 12px;
+
+  .categoryTitle {
+    font-size: 18px;
+  }
+
+  .iconsGrid {
+    gap: 8px;
+  }
+
+  .iconWrapper {
+    width: 56px;
+    height: 56px;
+    padding: 10px;
+    border-radius: 14px;
   }
 }
+
+.skills {
+  background-color: var(--bg-primary);
+}
+
+.skillsGrid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Rest of your existing Skills styles... */

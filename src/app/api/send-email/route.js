@@ -2,12 +2,12 @@ import { NextResponse } from 'next/server';
 import { sendMail } from '../../../lib/sendMail';
 
 export async function POST(request) {
-  console.log('🔄 Email API called');
+  console.log('Email API called');
   
   try {
     // Get form data from request
     const { name, email, subject, message } = await request.json();
-    console.log('📝 Data received:', { name, email, subject });
+    console.log('Data received:', { name, email, subject });
 
     // Validate required fields
     if (!name || !email || !subject || !message) {
@@ -19,7 +19,7 @@ export async function POST(request) {
 
     // Check environment variables
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error('❌ Missing environment variables');
+      console.error('Missing environment variables');
       return NextResponse.json(
         { error: 'Email configuration missing' },
         { status: 500 }
@@ -88,7 +88,7 @@ export async function POST(request) {
     );
 
   } catch (error) {
-    console.error('💥 Email error:', error);
+    console.error('Email error:', error);
     return NextResponse.json(
       { 
         error: 'Failed to send email',

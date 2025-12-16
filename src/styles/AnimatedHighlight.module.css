@@ -1,0 +1,74 @@
+.highlight {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.highlightSvg {
+  position: absolute;
+  bottom: -2px;
+  left: -5%;
+  width: 110%;
+  height: 20px;
+  pointer-events: none;
+  overflow: visible;
+  z-index: -1;
+}
+
+.highlightPath {
+  fill: none;
+  stroke-width: 18;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  opacity: 0.4;
+  filter: url(#roughness);
+}
+
+/* Color Variants */
+.yellow .highlightPath {
+  stroke: #ffd700;
+}
+
+.blue .highlightPath {
+  stroke: #00d9ff;
+}
+
+.pink .highlightPath {
+  stroke: #ff6b9d;
+}
+
+.purple .highlightPath {
+  stroke: #a855f7;
+}
+
+.green .highlightPath {
+  stroke: #00b140;
+}
+
+.orange .highlightPath {
+  stroke: #ff9500;
+}
+
+/* Animation */
+.highlight.animate .highlightPath {
+  animation: draw 1.5s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Hand-drawn wobble effect */
+@keyframes wobble {
+  0%, 100% {
+    d: path('M2,10 Q50,5 100,12 T200,8 T300,10');
+  }
+  50% {
+    d: path('M2,12 Q50,8 100,10 T200,12 T300,8');
+  }
+}
