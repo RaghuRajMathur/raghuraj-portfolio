@@ -30,7 +30,7 @@ export default function Projects() {
 
   const projects = [
     {
-      title: 'Cybersecurity Portfolio',
+      title: 'Secure Portfolio Website | Next.js, Security Headers, Input Validation',
       description: 'Personal portfolio showcasing pentesting projects and security analysis work. Built with Next.js and Three.js.',
       image: '/project1.png',
       tags: ['Next.js', 'React', 'Three.js', 'Tailwind CSS'],
