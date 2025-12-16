@@ -32,9 +32,9 @@ export default function Projects() {
     {
       title: 'Cybersecurity Portfolio',
       description: 'Personal portfolio showcasing pentesting projects and security analysis work. Built with Next.js and Three.js.',
-      image: '/Project1.png',
+      image: '/project1.png',
       tags: ['Next.js', 'React', 'Three.js', 'Tailwind CSS'],
-      liveLink: 'https://yourportfolio.com',
+      liveLink: 'https://raghurajmathur-portfolio.vercel.app/',
       githubLink: 'https://github.com/yourusername/portfolio'
     }
   ];
