@@ -35,7 +35,7 @@ export default function Projects() {
       image: '/project1.png',
       tags: ['Next.js', 'React', 'Three.js', 'Tailwind CSS'],
       liveLink: 'https://raghurajmathur-portfolio.vercel.app/',
-      githubLink: 'https://github.com/yourusername/portfolio'
+      githubLink: 'https://github.com/RaghuRajMathur/raghuraj-portfolio'
     }
   ];
 
