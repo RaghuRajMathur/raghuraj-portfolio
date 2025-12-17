@@ -13,7 +13,7 @@ export default function Footer() {
             <div className={styles.logoSection}>
               <h3 className={styles.footerLogo}>RaghuRaj Mathur</h3>
               <p className={styles.logoDescription}>
-                A BCA Graduate and aspiring frontend developer creating modern, responsive, and user-focused web applications with cutting-edge technologies.
+                A BCA Graduate and aspiring Cyber Security Analyst.
               </p>
               <div className={styles.socialLinks}>
                 <a 
