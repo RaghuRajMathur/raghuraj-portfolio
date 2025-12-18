@@ -54,8 +54,6 @@ Building this taught me a lot about React components, managing state, handling f
 ---
 
 ***
-
-```markdown
 ## 📂 Project Structure
 
 ```
@@ -101,7 +99,7 @@ raghuraj-portfolio/
 ├── README.md                       # Project documentation
 └── vercel.json                     # Vercel deployment config
 ```
-
+```
 ### 📝 Key Directories Explained
 
 **`/src/app`** - Main application directory following Next.js App Router structure
