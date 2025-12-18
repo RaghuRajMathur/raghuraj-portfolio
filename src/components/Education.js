@@ -30,14 +30,6 @@ export default function Education() {
 
   const education = [
     {
-      logo: '/logo/du-logo.jpg',
-      institution: 'Shaheed Sukhdev College of Business Studies',
-      degree: 'Post Graduate Diploma in Cyber Security and Law',
-      period: 'Oct 2025 - Present',
-      location: 'University of Delhi',
-      website: 'https://www.sscbsdu.ac.in/'
-    },
-    {
       logo: '/logo/jims-logo.png',
       institution: 'Jagannath International Management School (GGSIPU)',
       degree: "Bachelor of Computer Applications (BCA) - CGPA: 8.17/10",
