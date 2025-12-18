@@ -67,24 +67,31 @@ raghuraj-portfolio/
 │   │   │   └── send-email/
 │   │   │       └── route.js        # API endpoint for contact form
 │   │   ├── components/
-│   │   │   ├── About.js            # About section component
-│   │   │   ├── Contact.js          # Contact form with email integration
-│   │   │   ├── Experience.js       # Work experience section
-│   │   │   ├── Footer.js           # Footer component
-│   │   │   ├── Header.js           # Navigation header
-│   │   │   ├── Hero.js             # Landing page hero section
-│   │   │   ├── Projects.js         # Projects showcase
-│   │   │   └── Skills.js           # Technical skills display
+│   │   │   ├── AnimatedHighlight.js    # Text highlight animation component
+│   │   │   ├── BottomNav.js            # Bottom navigation bar
+│   │   │   ├── Certificates.js         # Certifications display section
+│   │   │   ├── ContactForm.js          # Contact form with email integration
+│   │   │   ├── Education.js            # Education section
+│   │   │   ├── Experience.js           # Work experience timeline
+│   │   │   ├── FloatingIcons.js        # Floating icon animations
+│   │   │   ├── Footer.js               # Footer component
+│   │   │   ├── Hero.js                 # Landing page hero section
+│   │   │   ├── Projects.js             # Projects showcase
+│   │   │   ├── Skills.js               # Technical skills display
+│   │   │   ├── SkillsSphere3D.js       # 3D skills sphere visualization
+│   │   │   ├── SkillsSphereSection.js  # Skills sphere section wrapper
+│   │   │   └── ThemeToggle.js          # Dark/Light mode toggle
 │   │   ├── globals.css             # Global styles
 │   │   ├── layout.js               # Root layout component
 │   │   └── page.js                 # Main home page
-│   └── hooks/
+│   ├── hooks/
+│   │   └── useScrollAnimation.js   # Scroll animation hook
+│   └── lib/
 │       ├── logger.js               # Logging utility
 │       ├── rateLimit.js            # Rate limiting for API
 │       ├── sanitize.js             # Input sanitization
-│       ├── sendMail.js             # Email sending utility
-│       └── useScrollAnimation.js   # Scroll animation hook
-├── styles/                         # CSS Module styles (if separate)
+│       └── sendMail.js             # Email sending utility
+├── styles/                         # CSS Module styles (separate)
 ├── .dockerignore                   # Files to ignore in Docker build
 ├── .env.local                      # Local environment variables
 ├── .eslintrc.json                  # ESLint configuration
