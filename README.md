@@ -1,3 +1,4 @@
+```markdown
 # 🌐 Personal Portfolio Website
 
 A modern, responsive portfolio website built with Next.js and React, featuring a cybersecurity-themed dark mode design. This project showcases my technical skills and projects while demonstrating practical knowledge of full-stack development, Docker containerization, and cloud deployment.
@@ -53,7 +54,6 @@ Building this taught me a lot about React components, managing state, handling f
 
 ---
 
-***
 ## 📂 Project Structure
 
 ```
@@ -106,7 +106,7 @@ raghuraj-portfolio/
 ├── README.md                       # Project documentation
 └── vercel.json                     # Vercel deployment config
 ```
-```
+
 ### 📝 Key Directories Explained
 
 **`/src/app`** - Main application directory following Next.js App Router structure
@@ -114,12 +114,14 @@ raghuraj-portfolio/
   - **`/send-email`** - Contact form email endpoint
 - **`/components`** - Reusable React components for UI sections
 
-**`/src/hooks`** - Custom React hooks and utility functions
+**`/src/hooks`** - Custom React hooks for reusable logic
+- **`useScrollAnimation.js`** - Custom scroll animation hook
+
+**`/src/lib`** - Utility functions and helpers
 - **`logger.js`** - Logging functionality
 - **`rateLimit.js`** - API rate limiting protection
 - **`sanitize.js`** - Input sanitization for security
 - **`sendMail.js`** - Nodemailer email configuration
-- **`useScrollAnimation.js`** - Custom scroll animation hook
 
 **`/public`** - Static assets (images, favicon, etc.) accessible from browser
 
@@ -140,9 +142,6 @@ raghuraj-portfolio/
 - **`rateLimit.js`** - Protects API from spam/abuse
 - **`sanitize.js`** - Cleans user input to prevent injection attacks
 
-```
-
-***
 ---
 
 ## 🐳 Running with Docker (Easiest Way)
@@ -159,15 +158,17 @@ Make sure you have Docker installed on your system:
 
 Open your terminal and run:
 
+```
 docker pull raghurajmathur/raghuraj-portfolio:latest
-
+```
 
 This downloads the pre-built image from Docker Hub (about 1.25GB).
 
 ### Step 2: Run the Container
 
+```
 docker run -d -p 3000:3000 --name portfolio raghurajmathur/raghuraj-portfolio:latest
-
+```
 
 **What this does:**
 - `-d` runs it in the background
@@ -179,25 +180,33 @@ docker run -d -p 3000:3000 --name portfolio raghurajmathur/raghuraj-portfolio:la
 
 Once it starts (takes about 10-15 seconds), open your browser and go to:
 
+```
 http://localhost:3000
-
+```
 
 You should see the portfolio website running!
 
 ### Managing the Container
 
 **To stop the container:**
+```
 docker stop portfolio
+```
 
 **To start it again:**
+```
 docker start portfolio
+```
 
 **To remove the container:**
+```
 docker rm portfolio
+```
 
 **To view logs (if something goes wrong):**
+```
 docker logs portfolio
-
+```
 
 ---
 
@@ -213,12 +222,16 @@ If you want to modify the code or contribute, here's how to set it up on your ma
 
 ### Step 1: Clone the Repository
 
-git clone https://github.com/RaghuRajMathur/raghuraj-portfolio-master.git
-cd raghuraj-portfolio-master
+```
+git clone https://github.com/RaghuRajMathur/raghuraj-portfolio.git
+cd raghuraj-portfolio
+```
 
 ### Step 2: Install Dependencies
 
+```
 npm install
+```
 
 This will download all the required packages (might take a few minutes).
 
@@ -226,12 +239,16 @@ This will download all the required packages (might take a few minutes).
 
 Create a file named `.env.local` in the root directory:
 
-touch .env.local # On Windows use: type nul > .env.local
+```
+touch .env.local  # On Windows use: type nul > .env.local
+```
 
 Add your email credentials:
 
+```
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-gmail-app-password
+```
 
 **Important:** For Gmail, you need an App Password, not your regular password.
 - Go to [Google Account App Passwords](https://myaccount.google.com/apppasswords)
@@ -240,7 +257,9 @@ EMAIL_PASS=your-gmail-app-password
 
 ### Step 4: Run Development Server
 
+```
 npm run dev
+```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
@@ -250,8 +269,10 @@ The page will automatically reload when you make changes to the code.
 
 To create an optimized production build:
 
+```
 npm run build
 npm start
+```
 
 ---
 
@@ -285,8 +306,10 @@ The project is containerized and deployed on AWS EC2:
 
 I also deployed on Vercel for comparison:
 
+```
 npm install -g vercel
 vercel
+```
 
 Just follow the prompts and it deploys automatically.
 
@@ -388,3 +411,4 @@ Feel free to reach out if you have questions or want to connect:
 ---
 
 *Built with ❤️ by Raghuraj Mathur | Last Updated: December 2024*
+```
