@@ -53,44 +53,91 @@ Building this taught me a lot about React components, managing state, handling f
 
 ---
 
+***
+
+```markdown
 ## 📂 Project Structure
 
+```
 raghuraj-portfolio/
-├── app/
-│ ├── components/
-│ │ ├── About.js # About section component
-│ │ ├── Contact.js # Contact form with email integration
-│ │ ├── Experience.js # Work experience section
-│ │ ├── Footer.js # Footer component
-│ │ ├── Header.js # Navigation header
-│ │ ├── Hero.js # Landing page hero section
-│ │ ├── Projects.js # Projects showcase
-│ │ ├── Skills.js # Technical skills display
-│ │ └── ParticlesBackground.js # Background animations
-│ ├── styles/
-│ │ ├── globals.css # Global styles
-│ │ ├── About.module.css # About section styles
-│ │ ├── Contact.module.css # Contact form styles
-│ │ ├── Experience.module.css # Experience section styles
-│ │ ├── Footer.module.css # Footer styles
-│ │ ├── Header.module.css # Header styles
-│ │ ├── Hero.module.css # Hero section styles
-│ │ ├── Projects.module.css # Projects section styles
-│ │ └── Skills.module.css # Skills section styles
-│ ├── api/
-│ │ └── contact/
-│ │ └── route.js # API endpoint for contact form
-│ ├── layout.js # Root layout component
-│ └── page.js # Main page component
-├── public/
-│ ├── images/ # Project images and assets
-│ └── favicon.ico # Website favicon
-├── Dockerfile # Docker configuration
-├── next.config.mjs # Next.js configuration
-├── package.json # Project dependencies
-└── README.md # This file
+├── .next/                          # Next.js build output (auto-generated)
+├── node_modules/                   # Project dependencies (auto-generated)
+├── public/                         # Static assets
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── send-email/
+│   │   │       └── route.js        # API endpoint for contact form
+│   │   ├── components/
+│   │   │   ├── About.js            # About section component
+│   │   │   ├── Contact.js          # Contact form with email integration
+│   │   │   ├── Experience.js       # Work experience section
+│   │   │   ├── Footer.js           # Footer component
+│   │   │   ├── Header.js           # Navigation header
+│   │   │   ├── Hero.js             # Landing page hero section
+│   │   │   ├── Projects.js         # Projects showcase
+│   │   │   └── Skills.js           # Technical skills display
+│   │   ├── globals.css             # Global styles
+│   │   ├── layout.js               # Root layout component
+│   │   └── page.js                 # Main home page
+│   └── hooks/
+│       ├── logger.js               # Logging utility
+│       ├── rateLimit.js            # Rate limiting for API
+│       ├── sanitize.js             # Input sanitization
+│       ├── sendMail.js             # Email sending utility
+│       └── useScrollAnimation.js   # Scroll animation hook
+├── styles/                         # CSS Module styles (if separate)
+├── .dockerignore                   # Files to ignore in Docker build
+├── .env.local                      # Local environment variables
+├── .eslintrc.json                  # ESLint configuration
+├── .gitignore                      # Git ignore rules
+├── Dockerfile                      # Docker configuration
+├── jsconfig.json                   # JavaScript configuration
+├── middleware.js                   # Next.js middleware
+├── next.config.mjs                 # Next.js configuration
+├── package-lock.json               # Dependency lock file
+├── package.json                    # Project dependencies and scripts
+├── postcss.config.mjs              # PostCSS configuration
+├── README.md                       # Project documentation
+└── vercel.json                     # Vercel deployment config
+```
 
+### 📝 Key Directories Explained
 
+**`/src/app`** - Main application directory following Next.js App Router structure
+- **`/api`** - Backend API routes for server-side logic
+  - **`/send-email`** - Contact form email endpoint
+- **`/components`** - Reusable React components for UI sections
+
+**`/src/hooks`** - Custom React hooks and utility functions
+- **`logger.js`** - Logging functionality
+- **`rateLimit.js`** - API rate limiting protection
+- **`sanitize.js`** - Input sanitization for security
+- **`sendMail.js`** - Nodemailer email configuration
+- **`useScrollAnimation.js`** - Custom scroll animation hook
+
+**`/public`** - Static assets (images, favicon, etc.) accessible from browser
+
+**Root Configuration Files:**
+- **`Dockerfile`** - Docker container setup
+- **`next.config.mjs`** - Next.js settings and security headers
+- **`.env.local`** - Environment variables (email credentials - not in Git)
+- **`package.json`** - Project dependencies and npm scripts
+- **`middleware.js`** - Next.js middleware for request handling
+- **`vercel.json`** - Vercel deployment configuration
+
+### 🔒 Important Files
+
+- **`.env.local`** - Contains sensitive email credentials (never commit to Git)
+- **`route.js`** - API endpoint handling contact form submissions
+- **`sendMail.js`** - Nodemailer configuration for Gmail SMTP
+- **`next.config.mjs`** - Security headers (CSP, HSTS, XSS protection)
+- **`rateLimit.js`** - Protects API from spam/abuse
+- **`sanitize.js`** - Cleans user input to prevent injection attacks
+
+```
+
+***
 ---
 
 ## 🐳 Running with Docker (Easiest Way)
