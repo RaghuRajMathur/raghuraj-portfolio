@@ -1,4 +1,3 @@
-```markdown
 # 🌐 Personal Portfolio Website
 
 A modern, responsive portfolio website built with Next.js and React, featuring a cybersecurity-themed dark mode design. This project showcases my technical skills and projects while demonstrating practical knowledge of full-stack development, Docker containerization, and cloud deployment.
@@ -410,5 +409,4 @@ Feel free to reach out if you have questions or want to connect:
 
 ---
 
-*Built with ❤️ by Raghuraj Mathur | Last Updated: December 2024*
-```
+*Built by Raghuraj Mathur | Last Updated: December 2024*
