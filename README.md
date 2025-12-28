@@ -405,7 +405,7 @@ Feel free to reach out if you have questions or want to connect:
 
 ---
 
-**⭐ If you found this project helpful or interesting, please consider giving it a star!**
+**If you found this project helpful or interesting, please consider giving it a star!**
 
 ---
 
