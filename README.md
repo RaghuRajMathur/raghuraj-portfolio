@@ -6,8 +6,7 @@ A modern, responsive portfolio website built with Next.js and React, featuring a
 
 ## Live Demo
 
-- **AWS EC2 Deployment:** [http://52.66.235.242](http://52.66.235.242)
-- **Vercel Deployment:** [https://raghuraj-portfolio.vercel.app](https://raghuraj-portfolio.vercel.app)
+- **You can hire me if you like my work:** [https://raghuraj-portfolio.vercel.app](https://raghuraj-portfolio.vercel.app)
 
 ---
 
