@@ -209,7 +209,7 @@ docker logs portfolio
 
 ---
 
-## 💻 Running Locally (For Development)
+##  Running Locally (For Development)
 
 If you want to modify the code or contribute, here's how to set it up on your machine.
 
