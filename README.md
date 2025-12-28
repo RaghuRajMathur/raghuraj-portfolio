@@ -314,7 +314,7 @@ Just follow the prompts and it deploys automatically.
 
 ---
 
-## 🐛 Issues I Faced & Fixed
+##  Issues I Faced & Fixed
 
 While building this, I ran into several problems. Here's what happened and how I fixed them:
 
