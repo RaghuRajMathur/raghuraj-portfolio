@@ -1,17 +1,17 @@
-# 🌐 Personal Portfolio Website
+# Personal Portfolio Website
 
 A modern, responsive portfolio website built with Next.js and React, featuring a cybersecurity-themed dark mode design. This project showcases my technical skills and projects while demonstrating practical knowledge of full-stack development, Docker containerization, and cloud deployment.
 
 ![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen) ![Next.js](https://img.shields.io/badge/Next.js-16.0-black) ![Docker](https://img.shields.io/badge/Docker-Enabled-blue) ![AWS](https://img.shields.io/badge/AWS-EC2-orange)
 
-## 🚀 Live Demo
+## Live Demo
 
 - **AWS EC2 Deployment:** [http://52.66.235.242](http://52.66.235.242)
 - **Vercel Deployment:** [https://raghuraj-portfolio.vercel.app](https://raghuraj-portfolio.vercel.app)
 
 ---
 
-## 📖 About This Project
+## About This Project
 
 I created this portfolio website as part of my learning journey in web development and cloud technologies. The main goal was to build something practical while learning modern deployment practices like containerization and cloud hosting.
 
@@ -21,7 +21,7 @@ Building this taught me a lot about React components, managing state, handling f
 
 ---
 
-## ✨ Features
+## Features
 
 - **Responsive Design** - Works on all devices from mobile to desktop
 - **Dark Mode UI** - Cybersecurity-themed interface with smooth animations
@@ -32,7 +32,7 @@ Building this taught me a lot about React components, managing state, handling f
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend:**
 - Next.js 16.0
@@ -53,7 +53,7 @@ Building this taught me a lot about React components, managing state, handling f
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 raghuraj-portfolio/
@@ -106,7 +106,7 @@ raghuraj-portfolio/
 └── vercel.json                     # Vercel deployment config
 ```
 
-### 📝 Key Directories Explained
+### Key Directories Explained
 
 **`/src/app`** - Main application directory following Next.js App Router structure
 - **`/api`** - Backend API routes for server-side logic
@@ -132,7 +132,7 @@ raghuraj-portfolio/
 - **`middleware.js`** - Next.js middleware for request handling
 - **`vercel.json`** - Vercel deployment configuration
 
-### 🔒 Important Files
+### Important Files
 
 - **`.env.local`** - Contains sensitive email credentials (never commit to Git)
 - **`route.js`** - API endpoint handling contact form submissions
@@ -143,7 +143,7 @@ raghuraj-portfolio/
 
 ---
 
-## 🐳 Running with Docker (Easiest Way)
+## Running with Docker (Easiest Way)
 
 If you just want to run this project without setting up the development environment, Docker is the quickest option.
 
@@ -275,7 +275,7 @@ npm start
 
 ---
 
-## 🔒 Security Features
+## Security Features
 
 I implemented several security measures to make this production-ready:
 
@@ -288,7 +288,7 @@ I implemented several security measures to make this production-ready:
 
 ---
 
-## 🚢 Deployment
+##  Deployment
 
 ### Docker Deployment (What I Used)
 
@@ -336,7 +336,7 @@ While building this, I ran into several problems. Here's what happened and how I
 
 ---
 
-## 🎓 What I Learned
+##  What I Learned
 
 This project taught me way more than I expected:
 
@@ -356,7 +356,7 @@ The deployment part was the hardest but also the most rewarding. Getting everyth
 
 ---
 
-## 📝 Future Improvements
+##  Future Improvements
 
 Things I want to add or improve:
 
@@ -373,19 +373,19 @@ Things I want to add or improve:
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 If you find any bugs or have suggestions for improvements, feel free to open an issue or submit a pull request. I'm still learning so any feedback is appreciated!
 
 ---
 
-## 📄 License
+##  License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source .
 
 ---
 
-## 📧 Contact
+##  Contact
 
 Feel free to reach out if you have questions or want to connect:
 
@@ -396,7 +396,7 @@ Feel free to reach out if you have questions or want to connect:
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Thanks to all the online tutorials and documentation that helped me build this
 - Special thanks to the Next.js and React communities for their helpful resources
