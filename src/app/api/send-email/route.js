@@ -68,18 +68,18 @@ function validateEmail(email) {
 }
 
 export async function POST(request) {
-  console.log('🔄 Email API called');
+  console.log('Email API called');
   
   try {
     // Get client IP
     const clientIp = getClientIp(request);
-    console.log('📍 Request from IP:', clientIp);
+    console.log('Request from IP:', clientIp);
 
     // Check rate limit
     const rateLimitResult = checkRateLimit(clientIp);
     
     if (!rateLimitResult.allowed) {
-      console.warn('⚠️ Rate limit exceeded for IP:', clientIp);
+      console.warn('Rate limit exceeded for IP:', clientIp);
       return NextResponse.json(
         { 
           error: 'Too many requests. Please try again later.',
@@ -101,7 +101,7 @@ export async function POST(request) {
     const body = await request.json();
     const { name, email, subject, message } = body;
     
-    console.log('📝 Data received:', { 
+    console.log('Data received:', { 
       name: name?.substring(0, 20), 
       email, 
       subject: subject?.substring(0, 30) 
@@ -109,7 +109,7 @@ export async function POST(request) {
 
     // Validate required fields
     if (!name || !email || !subject || !message) {
-      console.error('❌ Missing required fields');
+      console.error('Missing required fields');
       return NextResponse.json(
         { error: 'All fields are required' },
         { status: 400 }
@@ -118,7 +118,7 @@ export async function POST(request) {
 
     // Validate email format
     if (!validateEmail(email)) {
-      console.error('❌ Invalid email format:', email);
+      console.error('Invalid email format:', email);
       return NextResponse.json(
         { error: 'Invalid email address' },
         { status: 400 }
@@ -168,7 +168,7 @@ export async function POST(request) {
     const isSpam = spamPatterns.some(pattern => pattern.test(fullText));
 
     if (isSpam) {
-      console.warn('⚠️ Potential spam detected from:', clientIp);
+      console.warn('Potential spam detected from:', clientIp);
       return NextResponse.json(
         { error: 'Message appears to be spam' },
         { status: 400 }
@@ -185,7 +185,7 @@ export async function POST(request) {
 
     // Check environment variables
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error('❌ Missing environment variables');
+      console.error('Missing environment variables');
       return NextResponse.json(
         { error: 'Email configuration error' },
         { status: 500 }
@@ -249,7 +249,7 @@ export async function POST(request) {
       </div>
     `;
 
-    console.log('📧 Starting email send process...');
+    console.log('Starting email send process...');
 
     // Send the email
     const result = await sendMail({
@@ -259,7 +259,7 @@ export async function POST(request) {
       message: htmlMessage
     });
 
-    console.log('✅ Email sent successfully:', result.messageId);
+    console.log('Email sent successfully:', result.messageId);
 
     // Return success response with rate limit headers
     return NextResponse.json(
@@ -279,7 +279,7 @@ export async function POST(request) {
     );
 
   } catch (error) {
-    console.error('💥 Email error:', error);
+    console.error('Email error:', error);
     
     // Don't expose internal error details to client
     return NextResponse.json(
